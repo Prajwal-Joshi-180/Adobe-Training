@@ -10,11 +10,11 @@ use Magento\Framework\View\Result\PageFactory;
 
 /**
  * Class Index
- * @package Unit6\AdminPage\Controller\Adminhtml\Index
+ * Index extends \Magento\Backend\App\Action
  */
 class Index extends \Magento\Backend\App\Action
 {
-    const ADMIN_RESOURCE = "Unit6_AdminPage::new_page";
+    public const ADMIN_RESOURCE = "Unit6_AdminPage::new_page";
 
     /**
      * @var \Magento\Framework\View\Result\PageFactory;
@@ -24,6 +24,7 @@ class Index extends \Magento\Backend\App\Action
     /**
      * Index constructor.
      * @param PageFactory $resultPageFactory
+     * @param Context $context
      */
     public function __construct(PageFactory $resultPageFactory, Context $context)
     {
@@ -32,6 +33,8 @@ class Index extends \Magento\Backend\App\Action
     }
 
     /**
+     * * return \Magento\Framework\View\Result\Page
+     *
      * @return \Magento\Framework\View\Result\Page
      */
     public function execute()
@@ -39,7 +42,7 @@ class Index extends \Magento\Backend\App\Action
         /** @var \Magento\Backend\Model\View\Result\Page $backendPage */
         $backendPage = $this->resultPageFactory->create();
         $backendPage->setActiveMenu('Unit6_AdminPage::new_admin_page');
-        $backendPage->addBreadcrumb(__('Dashboard'),__('New Admin Page'));
+        $backendPage->addBreadcrumb(__('Dashboard'), __('New Admin Page'));
         $backendPage->getConfig()->getTitle()->set('New Admin Page');
 
         return $backendPage;

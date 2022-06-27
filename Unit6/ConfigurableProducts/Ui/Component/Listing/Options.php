@@ -9,11 +9,11 @@ use Magento\Framework\Data\OptionSourceInterface;
 
 /**
  * Class Options
- * @package Unit6\ConfigurableProducts\Ui\Component\Listing
+ * ptions implements OptionSourceInterface
  */
 class Options implements OptionSourceInterface
 {
-    const ATTR_OPTIONS = [
+    public const ATTR_OPTIONS = [
         ['label' => 'None ', 'value' => '0'],
         ['label' => '1',     'value' => '1'],
         ['label' => '2',     'value' => '2'],
@@ -21,6 +21,8 @@ class Options implements OptionSourceInterface
     ];
 
     /**
+     * * return array
+     *
      * @return array
      */
     public function toOptionArray()

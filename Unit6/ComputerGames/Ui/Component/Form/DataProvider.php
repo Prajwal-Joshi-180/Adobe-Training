@@ -4,11 +4,13 @@
  * See COPYING.txt for license details.
  */
 namespace Unit6\ComputerGames\Ui\Component\Form;
+
 use Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool;
 use Unit6\ComputerGames\Model\ResourceModel\Game\CollectionFactory as GamesCollectionFactory;
 
 /**
  * Class DataProvider
+ * DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
  */
 class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
@@ -31,7 +33,6 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
      * @var array
      */
     protected $loadedData;
-
 
     /**
      * DataProvider constructor.
@@ -58,7 +59,6 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         $this->filterPool = $filterPool;
     }
 
-
     /**
      * Get data
      *
@@ -68,7 +68,7 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
     {
         if (!$this->loadedData) {
             $items = $this->collection->getItems();
-            $result = array();
+            $result = [];
             foreach ($items as $item) {
                 $this->loadedData[$item->getGameId()] = $item->getData();
                 break;

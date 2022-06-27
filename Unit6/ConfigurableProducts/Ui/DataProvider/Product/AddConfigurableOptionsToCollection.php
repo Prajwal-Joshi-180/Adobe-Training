@@ -5,42 +5,44 @@
  */
 namespace Unit6\ConfigurableProducts\Ui\DataProvider\Product;
 
-use Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable\Attribute\Collection as AttributesCollection;
+use Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable\Attribute\Collection as AttributesCol;
 use Magento\Framework\Data\Collection;
 use Magento\Ui\DataProvider\AddFilterToCollectionInterface;
 
 /**
  * Class AddConfigurableOptionsToCollection
- * @package Unit6\ConfigurableProducts\Ui\DataProvider\Product
+ * AddConfigurableOptionsToCollection implements AddFilterToCollectionInterface
  */
 class AddConfigurableOptionsToCollection implements AddFilterToCollectionInterface
 {
     /**
-     * @var AttributesCollection $attributeCollection
+     * @var AttributesCol $attributeCollection
      */
     protected $attributeCollection = null;
 
     /**
      * AddConfigurableOptionsToCollection constructor.
      *
-     * @param AttributesCollection $collection
+     * @param AttributesCol $collection
      */
-    public function __construct(AttributesCollection $collection)
+    public function __construct(AttributesCol $collection)
     {
         $this->attributeCollection = $collection;
     }
 
     /**
+     * * Argument
+     *
      * @param Collection $collection
      * @param string $field
-     * @param null $condition
+     * @param string $condition
      */
     public function addFilter(Collection $collection, $field, $condition = null)
     {
         if (isset($condition['eq']) && ($numberOfOptions = $condition['eq'])) {
             $select = $this->attributeCollection->getSelect()
-                ->reset(\Zend_Db_Select::COLUMNS)
-                ->columns(array('product_id', 'COUNT(*) as cnt'))
+                ->reset(\Magento\Framework\DB\Select::COLUMNS)
+                ->columns(['product_id', 'COUNT(*) as cnt'])
                 ->group('product_id');
 
             $res = $this->attributeCollection->getConnection()->fetchAll($select);
@@ -54,5 +56,4 @@ class AddConfigurableOptionsToCollection implements AddFilterToCollectionInterfa
             $collection->addFieldToFilter('entity_id', ['in' => $ids]);
         }
     }
-
 }

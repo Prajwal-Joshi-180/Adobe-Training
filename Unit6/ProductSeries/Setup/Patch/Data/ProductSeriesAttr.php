@@ -7,25 +7,26 @@
 namespace Unit6\ProductSeries\Setup\Patch\Data;
 
 use Magento\Eav\Setup\EavSetup;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchInterface;
 
 /**
  * Class ProductSeriesAttr
- * @package Unit6\ProductSeries\Setup\Patch\Data
+ * ProductSeriesAttr implements DataPatchInterface
  */
 class ProductSeriesAttr implements DataPatchInterface
 {
     /**
      * @var EavSetup
      */
-    protected $eavSetup;
+    protected EavSetup $eavSetup;
 
     /**
      * @var ModuleDataSetupInterface
      */
-    protected $moduleDataSetup;
+    protected ModuleDataSetupInterface $moduleDataSetup;
 
     /**
      * ProductSeriesAttr constructor.
@@ -39,8 +40,10 @@ class ProductSeriesAttr implements DataPatchInterface
     }
 
     /**
+     * * ruturn DataPatchInterface|void
+     *
      * @return DataPatchInterface|void
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException|\Zend_Validate_Exception
      */
     public function apply()
     {
@@ -65,6 +68,8 @@ class ProductSeriesAttr implements DataPatchInterface
     }
 
     /**
+     * * return array|string[]
+     *
      * @return array|string[]
      */
     public static function getDependencies()
@@ -73,11 +78,12 @@ class ProductSeriesAttr implements DataPatchInterface
     }
 
     /**
+     * * return  array|string[]
+     *
      * @return array|string[]
      */
     public function getAliases()
     {
         return [];
     }
-
 }

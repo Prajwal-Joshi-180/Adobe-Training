@@ -7,7 +7,7 @@ namespace Unit6\ComputerGames\Ui\Component\Options;
 
 class Types implements \Magento\Framework\Data\OptionSourceInterface
 {
-    const TYPE_OPTIONS = [
+    public const TYPE_OPTIONS = [
             ['label' => 'RPG',       'value' => 'RPG'],
             ['label' => 'RTS',       'value' => 'RTS'],
             ['label' => 'MMO',       'value' => 'MMO'],

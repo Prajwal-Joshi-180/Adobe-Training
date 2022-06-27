@@ -9,7 +9,7 @@ use Unit6\ComputerGames\Model\ResourceModel\Game as GameResourceModel;
 
 /**
  * Class Game
- * @package Unit6\ComputerGames\Model
+ * Game extends \Magento\Framework\Model\AbstractExtensibleModel
  */
 class Game extends \Magento\Framework\Model\AbstractExtensibleModel
 {
@@ -24,11 +24,12 @@ class Game extends \Magento\Framework\Model\AbstractExtensibleModel
     }
 
     /**
-     * TODO: Apply attr source model here
+     * * return array
+     *
      * @return array
      */
     public function getCustomAttributesCodes()
     {
-        return array('game_id', 'name', 'type', 'trial_period', 'release_date');
+        return ['game_id', 'name', 'type', 'trial_period', 'release_date'];
     }
 }

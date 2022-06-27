@@ -13,6 +13,7 @@ use Magento\Sales\Model\ResourceModel\Order\CollectionFactory;
 
 /**
  * Class Verify
+ * Verify extends AbstractMassAction
  */
 class Verify extends AbstractMassAction
 {
@@ -30,6 +31,8 @@ class Verify extends AbstractMassAction
     }
 
     /**
+     * * Argument
+     *
      * @param AbstractCollection $collection
      * @return \Magento\Framework\Controller\Result\Redirect
      */

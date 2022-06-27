@@ -5,13 +5,14 @@
  */
 
 namespace Unit6\ComputerGames\Controller\Adminhtml\Game;
+
 use Magento\Backend\App\Action;
 use Magento\Framework\Controller\Result\RedirectFactory;
 use Unit6\ComputerGames\Model\GameFactory;
 
 /**
  * Class Save
- * @package Unit6\ComputerGames\Controller\Adminhtml\Game
+ * Save extends Action
  */
 class Save extends Action
 {
@@ -26,7 +27,10 @@ class Save extends Action
     protected $resultRedirectFactory;
 
     /**
-     * Edit constructor.
+     * * Edit constructor.
+     * @param Action\Context $context
+     * @param GameFactory $gameFactory
+     * @param RedirectFactory $redirectFactory
      */
     public function __construct(Action\Context $context, GameFactory $gameFactory, RedirectFactory $redirectFactory)
     {
@@ -46,7 +50,7 @@ class Save extends Action
         if (isset($postData['game_id'])) {
             $gameId = (int)$postData['game_id'];
         }
-        
+
         $this->game->setName($postData['name'])
             ->setReleaseDate($postData['release_date'])
             ->setType($postData['type'])
@@ -78,11 +82,12 @@ class Save extends Action
     }
 
     /**
+     * * return bool
+     *
      * @return bool
      */
     protected function _isAllowed()
     {
         return $this->_authorization->isAllowed('Unit6_ComputerGames::grid');
-
     }
 }

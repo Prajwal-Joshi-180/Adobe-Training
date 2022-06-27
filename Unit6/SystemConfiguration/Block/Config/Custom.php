@@ -8,14 +8,15 @@ namespace Unit6\SystemConfiguration\Block\Config;
 use Magento\Config\Block\System\Config\Form\Field;
 use Magento\Framework\Data\Form\Element\AbstractElement;
 
-
 /**
  * Class Custom
- * @package Unit6\SystemConfiguration\Block\Config
+ * Custom extends Field
  */
 class Custom extends Field
 {
     /**
+     * * Arumment
+     *
      * @param AbstractElement $element
      * @return string
      */

@@ -7,7 +7,7 @@ namespace Unit6\ComputerGames\Model\ResourceModel;
 
 /**
  * Class Game
- * @package Unit6\ComputerGames\Model\ResourceModel
+ * Game extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
  */
 class Game extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {

@@ -11,7 +11,7 @@ use Unit6\ComputerGames\Model\GameFactory;
 
 /**
  * Class Delete
- * @package Unit6\ComputerGames\Controller\Adminhtml\Game
+ * Delete extends Action
  */
 class Delete extends Action
 {
@@ -27,6 +27,9 @@ class Delete extends Action
 
     /**
      * Edit constructor.
+     * @param Action\Context $context
+     * @param GameFactory $gameFactory
+     * @param RedirectFactory $redirectFactory
      */
     public function __construct(Action\Context $context, GameFactory $gameFactory, RedirectFactory $redirectFactory)
     {
@@ -53,6 +56,8 @@ class Delete extends Action
     }
 
     /**
+     * * return bool
+     *
      * @return bool
      */
     protected function _isAllowed()

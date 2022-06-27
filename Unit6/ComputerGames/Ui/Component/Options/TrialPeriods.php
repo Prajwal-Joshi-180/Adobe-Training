@@ -7,11 +7,11 @@ namespace Unit6\ComputerGames\Ui\Component\Options;
 
 /**
  * Class TrialPeriods
- * @package Unit6\ComputerGames\Ui\Component\Form
+ * TrialPeriods implements \Magento\Framework\Data\OptionSourceInterface
  */
 class TrialPeriods implements \Magento\Framework\Data\OptionSourceInterface
 {
-    const TRIAL_PERIODS = [
+    public const TRIAL_PERIODS = [
         ['label' => 'No', 'value' => '0'],
         ['label' => 'Month', 'value' => '1'],
         ['label' => '2 Months', 'value' => '2'],

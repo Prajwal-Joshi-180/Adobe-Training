@@ -5,46 +5,51 @@
  */
 namespace Unit6\ComputerGames\Controller\Adminhtml\Game;
 
+use Exception;
 use Magento\Backend\App\Action;
+use Magento\Framework\Controller\Result\Json;
+use Magento\Framework\Controller\Result\JsonFactory;
+use Psr\Log\LoggerInterface;
 use Unit6\ComputerGames\Model\Game;
 
 /**
  * Class InlineEdit
- * @package Unit6\ComputerGames\Controller\Adminhtml\Game
+ * InlineEdit extends \Magento\Backend\App\Action
  */
-class InlineEdit extends \Magento\Backend\App\Action
+class InlineEdit extends Action
 {
     /**
      * Authorization level of a basic admin session
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Unit6_ComputerGames::grid';
+    public const ADMIN_RESOURCE = 'Unit6_ComputerGames::grid';
 
     /**
      * @var Game
      */
-    private $game;
+    private Game $game;
 
     /**
-     * @var \Magento\Framework\Controller\Result\JsonFactory
+     * @var JsonFactory
      */
-    protected $resultJsonFactory;
+    protected JsonFactory $resultJsonFactory;
 
     /**
-     * @var \Psr\Log\LoggerInterface
+     * @var LoggerInterface
      */
-    protected $logger;
+    protected LoggerInterface $logger;
 
     /**
      * @param Action\Context $context
-     * @param \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory
-     * @param \Psr\Log\LoggerInterface $logger
+     * @param JsonFactory $resultJsonFactory
+     * @param LoggerInterface $logger
+     * @param Game $game
      */
     public function __construct(
         Action\Context $context,
-        \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory,
-        \Psr\Log\LoggerInterface $logger,
+        JsonFactory $resultJsonFactory,
+        LoggerInterface $logger,
         Game $game
     ) {
         $this->resultJsonFactory = $resultJsonFactory;
@@ -61,11 +66,11 @@ class InlineEdit extends \Magento\Backend\App\Action
      * but model & collection
      * in teaching approach only!
      *
-     * @return \Magento\Framework\Controller\Result\Json
+     * @return Json
+     * @throws Exception
      */
     public function execute()
     {
-        /** @var \Magento\Framework\Controller\Result\Json $resultJson */
         $resultJson = $this->resultJsonFactory->create();
 
         $postItems = $this->getRequest()->getParam('items', []);
