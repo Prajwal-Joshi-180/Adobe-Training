@@ -13,12 +13,11 @@ use Magento\Catalog\Model\Product;
 use Magento\Catalog\Setup\CategorySetupFactory;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute as CatalogAttribute;
 
-
 /**
  * TODO Create another data patch for assigning attribute with frontend model.
  *
  * Class CategoryAttr
- * @package Unit4\MultiSelect\Setup\Patch\Data
+ * CategoryAttr implements DataPatchInterface
  */
 class CategoryAttr implements DataPatchInterface
 {
@@ -46,6 +45,8 @@ class CategoryAttr implements DataPatchInterface
     }
 
     /**
+     * * return DataPatchInterface|void
+     *
      * @return DataPatchInterface|void
      */
     public function apply()
@@ -60,7 +61,7 @@ class CategoryAttr implements DataPatchInterface
             'required' => 0,
             'visible_on_front' => 1,
             'global' => CatalogAttribute::SCOPE_STORE,
-            'backend' => 'Magento\Eav\Model\Entity\Attribute\Backend\ArrayBackend',
+            'backend' => \Magento\Eav\Model\Entity\Attribute\Backend\ArrayBackend::class,
             'option' => ['values' => [
                 'left',
                 'right',
@@ -74,6 +75,8 @@ class CategoryAttr implements DataPatchInterface
     }
 
     /**
+     * * return array|string[]
+     *
      * @return array|string[]
      */
     public static function getDependencies()
@@ -82,6 +85,8 @@ class CategoryAttr implements DataPatchInterface
     }
 
     /**
+     * * return array|string[]
+     *
      * @return array|string[]
      */
     public function getAliases()

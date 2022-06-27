@@ -12,9 +12,8 @@ use Magento\Customer\Model\Customer;
 use Magento\Customer\Setup\CustomerSetupFactory;
 use Magento\Framework\Setup\Patch\PatchInterface;
 
-
 /**
- * @package Unit4\CustomPriority\Setup\Patch\Data
+ * CustomerAttr implements \Magento\Framework\Setup\Patch\DataPatchInterface
  */
 class CustomerAttr implements \Magento\Framework\Setup\Patch\DataPatchInterface
 {
@@ -42,6 +41,8 @@ class CustomerAttr implements \Magento\Framework\Setup\Patch\DataPatchInterface
     }
 
     /**
+     * * return \Magento\Framework\Setup\Patch\DataPatchInterface|void
+     *
      * @return \Magento\Framework\Setup\Patch\DataPatchInterface|void
      */
     public function apply()
@@ -50,7 +51,6 @@ class CustomerAttr implements \Magento\Framework\Setup\Patch\DataPatchInterface
 
         /** @var CustomerSetup $customerSetup */
         $customerSetup = $this->customerSetupFactory->create(['setup' => $this->moduleDataSetup]);
-        // $customerSetup->updateAttribute();
 
         $customerSetup->addAttribute(
             Customer::ENTITY,
@@ -74,6 +74,8 @@ class CustomerAttr implements \Magento\Framework\Setup\Patch\DataPatchInterface
     }
 
     /**
+     * * return array|string[]
+     *
      * @return array|string[]
      */
     public static function getDependencies()
@@ -82,11 +84,12 @@ class CustomerAttr implements \Magento\Framework\Setup\Patch\DataPatchInterface
     }
 
     /**
+     * * array|string[]
+     *
      * @return array|string[]
      */
     public function getAliases()
     {
         return [];
     }
-
 }

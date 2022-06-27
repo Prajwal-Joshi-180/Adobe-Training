@@ -8,14 +8,13 @@ namespace Unit4\TextInput\Setup\Patch\Data;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchInterface;
-
 use Magento\Catalog\Setup\CategorySetup;
 use Magento\Catalog\Setup\CategorySetupFactory;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute as CatalogAttribute;
 
 /**
- * @package Unit4\TextInput\Setup
+ * CategoryAttr implements DataPatchInterface
  */
 class CategoryAttr implements DataPatchInterface
 {
@@ -43,6 +42,8 @@ class CategoryAttr implements DataPatchInterface
     }
 
     /**
+     * * return DataPatchInterface|void
+     *
      * @return DataPatchInterface|void
      */
     public function apply()
@@ -61,6 +62,8 @@ class CategoryAttr implements DataPatchInterface
     }
 
     /**
+     * * return array|string[]
+     *
      * @return array|string[]
      */
     public static function getDependencies()
@@ -69,6 +72,8 @@ class CategoryAttr implements DataPatchInterface
     }
 
     /**
+     * * return array|string[]
+     *
      * @return array|string[]
      */
     public function getAliases()

@@ -7,12 +7,14 @@ namespace Unit4\MultiSelect\Model\Entity\Attribute\Frontend;
 
 /**
  * Class HtmlList
- * @package Unit4\MultiSelect\Model\Entity\Attribute\Frontend
+ * HtmlList extends \Magento\Eav\Model\Entity\Attribute\Frontend\AbstractFrontend
  */
 class HtmlList extends \Magento\Eav\Model\Entity\Attribute\Frontend\AbstractFrontend
 {
 
     /**
+     * * param \Magento\Framework\DataObject $object
+     *
      * @param \Magento\Framework\DataObject $object
      * @return mixed|string
      */
@@ -25,6 +27,8 @@ class HtmlList extends \Magento\Eav\Model\Entity\Attribute\Frontend\AbstractFron
     }
 
     /**
+     * * param \Magento\Framework\DataObject $object
+     *
      * @param \Magento\Framework\DataObject $object
      * @return string
      */
@@ -39,6 +43,8 @@ class HtmlList extends \Magento\Eav\Model\Entity\Attribute\Frontend\AbstractFron
     }
 
     /**
+     * * param \Magento\Framework\DataObject $object
+     *
      * @param \Magento\Framework\DataObject $object
      * @return array|bool|mixed
      */
@@ -50,7 +56,9 @@ class HtmlList extends \Magento\Eav\Model\Entity\Attribute\Frontend\AbstractFron
     }
 
     /**
-     * @param $option
+     * * param  $option
+     *
+     * @param bool $option
      * @return bool
      */
     private function isSingleValue($option)

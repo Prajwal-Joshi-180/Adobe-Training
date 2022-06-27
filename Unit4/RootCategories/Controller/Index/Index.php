@@ -10,11 +10,13 @@ use \Magento\Framework\Controller\ResultFactory;
 
 /**
  * Class Index
- * @package Unit4\RootCategories\Controller\Index
+ * Index extends \Magento\Framework\App\Action\Action
  */
 class Index extends \Magento\Framework\App\Action\Action
 {
     /**
+     * * return \Magento\Framework\View\Result\Page
+     *
      * @return \Magento\Framework\View\Result\Page
      */
     public function execute()

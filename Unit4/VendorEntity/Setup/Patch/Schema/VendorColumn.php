@@ -10,7 +10,7 @@ use Magento\Framework\Setup\Patch\SchemaPatchInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
 
 /**
- * @package Unit4\VendorEntity\Setup
+ * VendorColumn implements SchemaPatchInterface
  */
 class VendorColumn implements SchemaPatchInterface
 {
@@ -29,26 +29,28 @@ class VendorColumn implements SchemaPatchInterface
     }
 
     /**
+     * * return SchemaPatchInterface|void
+     *
      * @return SchemaPatchInterface|void
      */
     public function apply()
     {
         $this->moduleSchemaSetup->startSetup();
 
-        $this->moduleSchemaSetup->getConnection()->addColumn('vendor_entity', 'goods_type',
-            [
+        $this->moduleSchemaSetup->getConnection()->addColumn('vendor_entity', 'goods_type', [
                 'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
                 'length' => 64,
                 'unsigned' => true,
                 'nullable' => false,
                 'comment' => 'Vendor goods type'
-            ]
-        );
+            ]);
 
         $this->moduleSchemaSetup->endSetup();
     }
 
     /**
+     * * return array|string[]
+     *
      * @return array|string[]
      */
     public static function getDependencies()
@@ -57,12 +59,12 @@ class VendorColumn implements SchemaPatchInterface
     }
 
     /**
+     * * array|string[]
+     *
      * @return array|string[]
      */
     public function getAliases()
     {
         return [];
     }
-
-
 }

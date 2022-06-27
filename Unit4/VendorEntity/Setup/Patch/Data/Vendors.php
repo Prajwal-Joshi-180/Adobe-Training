@@ -10,7 +10,7 @@ use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchInterface;
 
 /**
- * @package Unit4\VendorEntity\Setup
+ * Vendors implements DataPatchInterface
  */
 class Vendors implements DataPatchInterface
 {
@@ -29,24 +29,26 @@ class Vendors implements DataPatchInterface
     }
 
     /**
+     * * return DataPatchInterface|void
+     *
      * @return DataPatchInterface|void
      */
     public function apply()
     {
         $this->moduleDataSetup->startSetup();
 
-        $this->moduleDataSetup->getConnection()->insert('vendor_entity',
-            [
+        $this->moduleDataSetup->getConnection()->insert('vendor_entity', [
                 'code'    => 'Auchan',
                 'contact' => '38011122333',
                 'goods_type'     => 'food'
-            ]
-        );
+            ]);
 
         $this->moduleDataSetup->endSetup();
     }
 
     /**
+     * * return array|string[]
+     *
      * @return array|string[]
      */
     public static function getDependencies()
@@ -55,6 +57,8 @@ class Vendors implements DataPatchInterface
     }
 
     /**
+     * * return array|string[]
+     *
      * @return array|string[]
      */
     public function getAliases()

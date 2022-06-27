@@ -5,11 +5,12 @@
  */
 
 namespace Unit4\ProductSave\Observer;
+
 use Magento\Framework\Event\ObserverInterface;
 
 /**
  * Class LogProductSave
- * @package Unit4\ProductSave\Observer
+ * LogProductSave implements ObserverInterface
  */
 class LogProductSave implements ObserverInterface
 {
@@ -19,6 +20,7 @@ class LogProductSave implements ObserverInterface
     protected $_logger = null;
 
     /**
+     * @param \Psr\Log\LoggerInterface $logger
      * LogProductSave constructor.
      */
     public function __construct(\Psr\Log\LoggerInterface $logger)
@@ -27,6 +29,8 @@ class LogProductSave implements ObserverInterface
     }
 
     /**
+     * * param \Magento\Framework\Event\Observer $observer
+     *
      * @param \Magento\Framework\Event\Observer $observer
      */
     public function execute(\Magento\Framework\Event\Observer $observer)

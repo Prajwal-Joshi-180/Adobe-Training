@@ -5,10 +5,11 @@
  */
 
 namespace Unit4\CustomPriority\Model\Entity\Attribute\Frontend\Source;
+
 use Magento\Eav\Model\Entity\Attribute\Source\AbstractSource;
 
 /**
- * @package Training\Orm\Entity\Attribute\Source
+ * CustomerPriority extends AbstractSource
  */
 class CustomerPriority extends AbstractSource
 {
@@ -19,7 +20,7 @@ class CustomerPriority extends AbstractSource
      */
     public function getAllOptions()
     {
-        $options = array_map(function($priority) {
+        $options = array_map(function ($priority) {
             return [
                 'label' => sprintf('Priority %d', $priority),
                 'value' => $priority
