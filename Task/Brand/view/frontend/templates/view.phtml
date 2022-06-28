@@ -1,0 +1,39 @@
+<?php
+/**
+ * @var Task\Brand\Block\View $block
+ */
+$brands = $block->getAllBrand();
+?>
+<div class="brand-listing">
+    <h1>Our Brand List</h1>
+    <span>
+        <a href="<?= $block->escapeUrl($block->getFormUrl())?>"><button>Add New Brand</button></a>
+    </span>
+    <?php if (count($brands) > 0): ?>
+        <table>
+            <tr>
+                <th><?= $block->escapeHtml(__('Id'))?></th>
+                <th><?= $block->escapeHtml(__('Brand Name')) ?></th>
+                <th><?= $block->escapeHtml(__('Brand Description')) ?></th>
+                <th><?= $block->escapeHtml(__('Action')) ?></th>
+            </tr>
+            <?php foreach ($block->getAllBrand() as $brand): ?>
+                <tr>
+                    <td><?= $block->escapeHtml($brand->getId())?></td>
+                    <td><?= $block->escapeHtml($brand->getName())?></td>
+                    <td><?= $block->escapeHtml($brand->getDescription())?></td>
+                    <td>
+                        <span>
+                            <a href="<?=$block->escapeHtml($block->getEditUrl().'id/'.$brand->getId())?>"><button>Edit</button></a>
+                        </span>
+                        <span>
+                            <a href="<?=$block->escapeHtml($block->getDeleteUrl().'id/'.$brand->getId())?>"><button>Delete</button></a>
+                        </span>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    <?php else: ?>
+        <h3><?= 'Brand List is Empty'?></h3>
+    <?php endif; ?>
+</div>
