@@ -9,13 +9,6 @@ use Magento\Customer\Model\EmailNotification;
 class DisableEmailNotification extends EmailNotification
 {
     /**
-     * Constant self::NEW_ACCOUNT_EMAIL_REGISTERED               welcome email, when confirmation is disabled
-     */
-    public const TEMPLATE_TYPES = [
-        self::NEW_ACCOUNT_EMAIL_REGISTERED => self::XML_PATH_REGISTER_EMAIL_TEMPLATE,
-    ];
-
-    /**
      * Disable email with new account related information
      *
      * @param CustomerInterface $customer
@@ -32,6 +25,5 @@ class DisableEmailNotification extends EmailNotification
         $storeId = null,
         $sendemailStoreId = null
     ): void {
-        $types = self::TEMPLATE_TYPES;
     }
 }
