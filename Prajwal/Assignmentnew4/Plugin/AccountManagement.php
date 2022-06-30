@@ -422,6 +422,7 @@ class AccountManagement extends Subject
      * @param AuthorizationInterface|null $authorization
      * @param AuthenticationInterface|null $authentication
      * @param Backend|null $eavValidator
+     * @param Subject $subject
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      * @SuppressWarnings(PHPMD.NPathComplexity)
@@ -510,44 +511,58 @@ class AccountManagement extends Subject
         $this->authentication = $authentication ?? $objectManager->get(AuthenticationInterface::class);
         $this->eavValidator = $eavValidator ?? $objectManager->get(Backend::class);
         $this->subject=$subject;
-        parent::__construct($customerFactory,
-        $eventManager,
-         $storeManager,
-         $mathRandom,
-         $validator,
-         $validationResultsDataFactory,
-         $addressRepository,
-         $customerMetadataService,
-         $customerRegistry,
-         $logger,
-         $encryptor,
-         $configShare,
-         $stringHelper,
-         $customerRepository,
-         $scopeConfig,
-         $transportBuilder,
-         $dataProcessor,
-         $registry,
-         $customerViewHelper,
-         $dateTime,
-         $customerModel,
-         $objectFactory,
-         $extensibleDataObjectConverter,
-         $credentialsValidator = null,
-         $dateTimeFactory = null,
-         $accountConfirmation = null,
-         $sessionManager = null,
-         $saveHandler = null,
-         $visitorCollectionFactory = null,
-         $searchCriteriaBuilder = null,
-         $addressRegistry = null,
-         $getByToken = null,
-         $allowedCountriesReader = null,
-         $sessionCleaner = null,
-         $authorization = null,
-         $authentication = null,
-         $eavValidator = null);
+        parent::__construct(
+            $customerFactory,
+            $eventManager,
+            $storeManager,
+            $mathRandom,
+            $validator,
+            $validationResultsDataFactory,
+            $addressRepository,
+            $customerMetadataService,
+            $customerRegistry,
+            $logger,
+            $encryptor,
+            $configShare,
+            $stringHelper,
+            $customerRepository,
+            $scopeConfig,
+            $transportBuilder,
+            $dataProcessor,
+            $registry,
+            $customerViewHelper,
+            $dateTime,
+            $customerModel,
+            $objectFactory,
+            $extensibleDataObjectConverter,
+            $credentialsValidator = null,
+            $dateTimeFactory = null,
+            $accountConfirmation = null,
+            $sessionManager = null,
+            $saveHandler = null,
+            $visitorCollectionFactory = null,
+            $searchCriteriaBuilder = null,
+            $addressRegistry = null,
+            $getByToken = null,
+            $allowedCountriesReader = null,
+            $sessionCleaner = null,
+            $authorization = null,
+            $authentication = null,
+            $eavValidator = null
+        );
     }
+    /**
+     * Disable the Welcome Email
+     *
+     * @param Subject $subject
+     * @param callable $proceed
+     * @param CustomerInterface $customer
+     * @param string $hash
+     * @param string $redirectUrl
+     * @throws InputMismatchException
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     * @SuppressWarnings(PHPMD.NPathComplexity)
+     */
     public function aroundCreateAccountWithPasswordHash(Subject $subject, callable $proceed, CustomerInterface $customer, $hash, $redirectUrl = '')
     {
         if ($customer->getId()) {
@@ -624,12 +639,26 @@ class AccountManagement extends Subject
 
         return $customer;
     }
+    /**
+     * Check is address allowed for store
+     *
+     * @param AddressInterface $address
+     * @param int|null $storeId
+     * @return bool
+     */
     private function isAddressAllowedForWebsite(AddressInterface $address, $storeId): bool
     {
         $allowedCountries = $this->allowedCountriesReader->getAllowedCountries(ScopeInterface::SCOPE_STORE, $storeId);
 
         return in_array($address->getCountryId(), $allowedCountries);
     }
+    /**
+     * Validate customer store id by customer website id.
+     *
+     * @param CustomerInterface $customer
+     * @return bool
+     * @throws LocalizedException
+     */
     public function validateCustomerStoreIdByWebsiteId(CustomerInterface $customer)
     {
         if (!$this->isCustomerInStore($this->configShare->getWebsiteId(), $customer->getStoreId())) {
