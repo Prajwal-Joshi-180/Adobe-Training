@@ -4,5 +4,5 @@
     <type name="Magento\Customer\Model\AccountManagement">
         <plugin name="no_email_notification" type="Prajwal\Assignmentnew4\Plugin\AccountManagement" sortOrder="1" disabled="false"/>
     </type>
-<!--    <preference for="Magento\Customer\Model\AccountManagement" type="Prajwal\Assignmentnew4\Model\DisableEmail" />-->
+<!--    <preference for="Magento\Customer\Model\AccountManagement" type="Prajwal\Assignmentnew4\Model\AccountManagement"/>-->
 </config>
