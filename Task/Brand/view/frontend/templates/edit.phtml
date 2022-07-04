@@ -1,15 +1,19 @@
 <?php
+/**
+ * @var Task\Brand\Block\View $block
+ * @var Magento\Framework\Escaper $escaper
+ */
 $data=$block->getBrand();
 ?>
-<form method="POST" action="<?= $block->escapeUrl($block->getAddUrl().'id/'.$data->getId())?>" >
+<form method="POST" action="<?= $escaper->escapeUrl($block->getAddUrl().'id/'.$data->getId())?>" >
     <h3>Brand Details</h3>
     <div>
         <label>Brand Name</label>
-        <input name="name" type="text" value="<?= $block->escapeHtml($data['name'] ?? null) ?>"/>
+        <input name="name" type="text" value="<?= $escaper->escapeHtml($data['name'] ?? null) ?>"/>
     </div>
     <div>
         <label>Brand Description</label>
-        <textarea name="description" ><?= $block->escapeHtml($data['description'] ?? null) ?></textarea>
+        <textarea name="description" ><?= $escaper->escapeHtml($data['description'] ?? null) ?></textarea>
     </div>
     <button>Submit</button>
 </form>

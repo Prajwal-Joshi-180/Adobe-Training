@@ -17,7 +17,7 @@
     </type>
 
     <type name="Magento\Theme\Block\Html\Breadcrumbs">
-        <plugin name="aroundBreadcrumbsPlugin" type="Unit1\Plugins\Plugin\AroundBreadcrumbsPlugin" sortOrder="3" disabled="false" />
+        <plugin name="aroundBreadcrumbsPlugin" type="Unit1\Plugins\Plugin\AroundBreadcrumbsPlugin" sortOrder="3" disabled="true" />
     </type>
 
     <type name="Magento\Theme\Block\Html\Breadcrumbs">
