@@ -4,7 +4,7 @@ namespace Task\Brand\Controller\Index;
 
 use Magento\Framework\App\Action\Action;
 use Task\Brand\Model\BrandFactory as ModelFactory;
-use Task\Brand\Model\ResourceModel\Brand as ResourceModel;
+use Task\Brand\Model\ResourceModel\Employee as ResourceModel;
 use Magento\Framework\App\Action\Context;
 
 class Delete extends Action

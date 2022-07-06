@@ -1,18 +1,18 @@
 <?php
 
-namespace Task\Brand\Model\ResourceModel;
+namespace Task\Employee\Model\ResourceModel;
 
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
-use Task\Brand\Model\ResourceModel\Employee as ResourceModel;
+use Task\Employee\Model\ResourceModel\Employee as ResourceModel;
 
-class Brand extends AbstractDb
+class Employee extends AbstractDb
 {
 
-    public const TABLE_NAME = 'task_brand';
+    public const TABLE_NAME = 'prajwal_assignment2';
     public const ID_FIELD_NAME = 'id';
     /**
-     * Brand constructor.
+     * Employee constructor.
      */
     protected function _construct()
     {

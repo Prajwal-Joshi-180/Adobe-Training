@@ -1,11 +1,11 @@
 <?php
 
-namespace Task\Brand\Model\ResourceModel\Brand;
+namespace Task\Employee\Model\ResourceModel\Employee;
 
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
-use Task\Brand\Model\Employee as Model;
-use Task\Brand\Model\ResourceModel\Employee as ResourceModel;
+use Task\Employee\Model\Employee as Model;
+use Task\Employee\Model\ResourceModel\Employee as ResourceModel;
 
 class Collection extends AbstractCollection
 {

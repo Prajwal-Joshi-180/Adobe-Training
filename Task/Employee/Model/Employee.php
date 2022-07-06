@@ -1,15 +1,15 @@
 <?php
 
-namespace Task\Brand\Model;
+namespace Task\Employee\Model;
 
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Model\AbstractModel;
-use Task\Brand\Model\ResourceModel\Employee as ResourceModel;
+use Task\Employee\Model\ResourceModel\Employee as ResourceModel;
 
-class Brand extends AbstractModel
+class Employee extends AbstractModel
 {
     /**
-     * Brand constructor.
+     * Employee constructor.
      */
     protected function _construct()
     {
