@@ -7,7 +7,6 @@
         <column xsi:type="varchar" name="first_name" nullable="false" length="255" comment="First Name"/>
         <column xsi:type="varchar" name="last_name" nullable="false" length="255" comment="Last Name"/>
         <column xsi:type="date" name="dob" nullable="false" comment="Date of birth"/>
-        <column xsi:type="text" name="address" nullable="false" comment="Address"/>
         <column xsi:type="timestamp" name="created_at" on_update="false" default="CURRENT_TIMESTAMP" comment="creation time"/>
         <column xsi:type="decimal" name="price" nullable="true" scale="2" precision="10" comment="Price"/>
         <column xsi:type="float" name="weight" nullable="true" comment="weight"/>
