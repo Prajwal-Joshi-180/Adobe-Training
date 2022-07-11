@@ -29,4 +29,12 @@ interface EmployeeRepositoryInterface
      * @return array Collection[]
      */
     public function getCollection();
+
+    /**
+     * Return Collection[]
+     *
+     * @param array $Ids
+     * @return array Data[]
+     */
+    public function getDataByIds(array $Ids);
 }

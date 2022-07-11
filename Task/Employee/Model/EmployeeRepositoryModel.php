@@ -27,23 +27,29 @@ class EmployeeRepositoryModel implements EmployeeRepositoryInterface
      * @var CollectionFactory
      */
     private $collectionFactory;
+    /**
+     * @var Collection
+     */
+    private Collection $collection;
 
     /**
      * EmployeeRepositoryModel constructor.
      * @param CollectionFactory $collectionFactory
+     * @param Collection $collection
      * @param EmployeeFactory $modelFactory
      * @param ResourceModel $resourceModel
      */
     public function __construct(
         CollectionFactory $collectionFactory,
+        Collection $collection,
         ModelFactory $modelFactory,
         ResourceModel $resourceModel
     ) {
         $this->modelFactory=$modelFactory;
+        $this->collection=$collection;
         $this->resourceModel=$resourceModel;
         $this->collectionFactory=$collectionFactory;
     }
-
     /**
      * Return Data[]
      *
@@ -64,8 +70,10 @@ class EmployeeRepositoryModel implements EmployeeRepositoryInterface
     public function load(int $value)
     {
         $model=$this->modelFactory->create();
-        $model->load($value);
-//        $this->resourceModel->load($model, $value);
+        $this->resourceModel->load($model, $value);
+        if (!$model->getId()) {
+            throw new NoSuchEntityException(__("Id %1 dosent exist", $value));
+        }
         return $model;
     }
 
@@ -77,6 +85,17 @@ class EmployeeRepositoryModel implements EmployeeRepositoryInterface
     public function getCollection()
     {
         $collection = $this->collectionFactory->create();
+        return $collection;
+    }
+    /**
+     * Return Collection[]
+     *
+     * @param array $Ids
+     * @return array Data[]
+     */
+    public function getDataByIds(array $Ids)
+    {
+        $collection= $this->getCollection()->addFieldToFilter('id', ['in'=>$Ids]);
         return $collection->getData();
     }
 }

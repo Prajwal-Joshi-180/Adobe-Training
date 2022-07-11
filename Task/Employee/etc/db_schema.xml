@@ -15,4 +15,15 @@
             <column name="id"/>
         </constraint>
     </table>
+    <table name="assignment2_address" resource="default" engine="innodb" comment="Personal stored here">
+        <column xsi:type="int" name="entity_id" unsigned="false" nullable="false" identity="true" comment="ID"/>
+        <column xsi:type="smallint" name="address_id" unsigned="false" nullable="false" default="0" comment="Address ID"/>
+        <column xsi:type="text" name="permanent_address" nullable="false" comment="Permanent Address"/>
+        <column xsi:type="text" name="temporary_address" nullable="false" comment="Temporary Address"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Creation Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="ASSIGNMENT2_ADDRESS_ADDRESS_ID_PRAJWAL_ASSIGNMENT2_ID" table="assignment2_address" column="address_id" referenceTable="prajwal_assignment2" referenceColumn="id"/>
+    </table>
 </schema>
