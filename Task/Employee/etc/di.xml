@@ -1,3 +1,10 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Task\Employee\Api\EmployeeRepositoryInterface" type="Task\Employee\Model\EmployeeRepositoryModel" />
+    <preference for="Task\Employee\Api\Data\EmployeeInterface" type="Task\Employee\Model\Employee" />
+    <preference for="Task\Employee\Api\EmployeeAddressRepositoryInterface" type="Task\Employee\Model\EmployeeAddressRepositoryModel" />
+    <preference for="Task\Employee\Api\Data\EmployeeAddressInterface" type="Task\Employee\Model\EmployeeAddress" />
+    <type name="Task\Employee\Api\EmployeeRepositoryInterface">
+        <plugin name="employee_reository_plugin"
+                type="Task\Employee\Plugin\EmployeeRepositoryInterface" sortOrder="1"/>
+    </type>
 </config>

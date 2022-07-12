@@ -8,10 +8,10 @@ use Task\Employee\Model\ResourceModel\Employee\Collection;
 interface EmployeeRepositoryInterface
 {
     /**
-     * Return Data[]
+     * Get Data by Id
      *
      * @param int $Id
-     * @return array Data[]
+     * @return \Task\Employee\Api\Data\EmployeeInterface
      */
     public function getById($Id);
 

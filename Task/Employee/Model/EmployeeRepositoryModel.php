@@ -51,14 +51,16 @@ class EmployeeRepositoryModel implements EmployeeRepositoryInterface
         $this->collectionFactory=$collectionFactory;
     }
     /**
-     * Return Data[]
+     * Get Student Data by Id
      *
      * @param int $Id
-     * @return array Data
+     * @return \Task\Employee\Model\Employee
      */
     public function getById($Id)
     {
-        return $this->load($Id)->getData();
+        $model=$this->modelFactory->create();
+        $this->resourceModel->load($model, $Id);
+        return $model;
     }
 
     /**

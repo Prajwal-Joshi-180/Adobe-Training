@@ -23,6 +23,5 @@
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="entity_id"/>
         </constraint>
-        <constraint xsi:type="foreign" referenceId="ASSIGNMENT2_ADDRESS_ADDRESS_ID_PRAJWAL_ASSIGNMENT2_ID" table="assignment2_address" column="address_id" referenceTable="prajwal_assignment2" referenceColumn="id"/>
     </table>
 </schema>

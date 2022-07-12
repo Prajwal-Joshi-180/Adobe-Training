@@ -47,9 +47,7 @@ class Index extends Action
     }
 
     /**
-     * Execute action based on request and return result
-     *
-     * @return ResultInterface|ResponseInterface
+     * @return ResponseInterface|\Magento\Framework\Controller\Result\Json|ResultInterface|\Task\Employee\Api\Data\EmployeeInterface
      */
     public function execute()
     {
@@ -57,8 +55,10 @@ class Index extends Action
         try {
 //            $employee=$this->employeeRepository->getDataByIds(['1','2']);
 //            return $resultJson->setData($employee);
-            $collection=$this->employeeRepository->getCollection()->getData();
-            return $resultJson->setData($collection);
+//            $collection=$this->employeeRepository->getCollection()->getData();
+            $collection=$this->employeeRepository->getById(1);
+            var_dump($collection);die();
+            return $collection;
         } catch (NoSuchEntityException $e) {
              return $resultJson->setData($e->getMessage());
         }

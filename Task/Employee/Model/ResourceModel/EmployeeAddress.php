@@ -1,16 +1,17 @@
 <?php
 
+
 namespace Task\Employee\Model\ResourceModel;
 
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
-class Employee extends AbstractDb
+class EmployeeAddress extends AbstractDb
 {
+    public const TABLE_NAME = 'assignment2_address';
+    public const ID_FIELD_NAME = 'entity_id';
 
-    public const TABLE_NAME = 'prajwal_assignment2';
-    public const ID_FIELD_NAME = 'id';
     /**
-     * Employee constructor.
+     * EmployeeAddress constructor.
      */
     protected function _construct()
     {
