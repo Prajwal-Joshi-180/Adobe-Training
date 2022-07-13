@@ -3,6 +3,9 @@
 namespace Task\Employee\Plugin;
 
 use Task\Employee\Model\ResourceModel\Employee\CollectionFactory;
+use Task\Employee\Model\EmployeeAddressRepositoryModel;
+use Task\Employee\Api\Data\EmployeeExtensionFactory;
+use Task\Employee\Api\EmployeeRepositoryExtension;
 
 class EmployeeRepositoryInterface
 {
@@ -10,14 +13,29 @@ class EmployeeRepositoryInterface
      * @var CollectionFactory
      */
     private CollectionFactory $collectionFactory;
+    /**
+     * @var EmployeeAddressRepositoryModel
+     */
+    private EmployeeAddressRepositoryModel $addressRepository;
+    /**
+     * @var EmployeeRepositoryExtension
+     */
+    private EmployeeRepositoryExtension $employeeRepositoryExtension;
 
     /**
      * EmployeeRepositoryInterface constructor.
      * @param CollectionFactory $collectionFactory
      */
-    public function __construct(CollectionFactory $collectionFactory)
-    {
+    public function __construct(
+        CollectionFactory $collectionFactory,
+        EmployeeAddressRepositoryModel $addressRepository,
+        EmployeeExtensionFactory $employeeExtensionFactory,
+        EmployeeRepositoryExtension $employeeRepositoryExtension
+    ) {
         $this->collectionFactory = $collectionFactory;
+        $this->addressRepository = $addressRepository;
+        $this->employeeExtensionFactory=$employeeExtensionFactory;
+        $this->employeeRepositoryExtension = $employeeRepositoryExtension;
     }
 
     /**
@@ -30,18 +48,11 @@ class EmployeeRepositoryInterface
         \Task\Employee\Api\EmployeeRepositoryInterface $subject,
         \Task\Employee\Api\Data\EmployeeInterface $employee
     ) {
-        if ($employee->getExtensionAttributes()) {
-            return $employee;
-        }
-        $employeeName= $this->getFirstName($employee->getId());
-        $extensionAttribute=  $employee->getExtensionAttributes()->setFirstName($employeeName);
-        $employee->setExtensionAttributes($extensionAttribute);
+        $AddressData=$this->addressRepository->getByAddressId($employee->getId());
+        $extensionAttributes=$employee->getExtensionAttributes();
+        $employeeExtension = $extensionAttributes ? $extensionAttributes : $this->employeeExtensionFactory->create();
+        $employeeExtension->setAddressItems($AddressData);
+        $employee->setExtensionAttributes($employeeExtension);
         return $employee;
-    }
-    private function getFirstName($Id)
-    {
-        return $this->collectionFactory->create()
-            ->addFieldToFilter('id', ['eq' => $Id])
-            ->getFirstItem()->getData('first_name');
     }
 }

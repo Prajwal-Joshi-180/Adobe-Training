@@ -60,6 +60,18 @@ class EmployeeAddressRepositoryModel implements EmployeeAddressRepositoryInterfa
         $this->resourceModel->load($model, $Id);
         return $model->getData();
     }
+
+    /**
+     * @param $addressId
+     * @return \Task\Employee\Api\Data\EmployeeAddressInterface
+     */
+    public function getByAddressId($addressId)
+    {
+        $object=$this->modelFactory->create();
+        $collection=$object->getCollection();
+        $collection->addFieldToFilter('address_id', $addressId);
+        return $collection->getData();
+    }
     /**
      * Return Collection
      *

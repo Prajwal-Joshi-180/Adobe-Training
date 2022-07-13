@@ -13,10 +13,15 @@ interface EmployeeAddressRepositoryInterface
     public function getById(int $Id);
 
     /**
+     * @param $addressId
+     * @return Data\EmployeeAddressInterface
+     */
+    public function getByAddressId($addressId);
+
+    /**
      * Return Collection[]
      *
      * @return array Collection[]
      */
     public function getCollection();
-
 }
