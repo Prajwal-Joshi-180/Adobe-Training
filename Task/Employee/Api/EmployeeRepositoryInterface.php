@@ -39,7 +39,9 @@ interface EmployeeRepositoryInterface
     public function getDataByIds(array $Ids);
 
     /**
-     * @param $Id
+     * Return the Employee Data by Employee Id
+     *
+     * @param int $Id
      * @return \Task\Employee\Api\Data\EmployeeInterface
      */
     public function getDataById($Id);

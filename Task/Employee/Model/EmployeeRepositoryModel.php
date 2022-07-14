@@ -102,8 +102,10 @@ class EmployeeRepositoryModel implements EmployeeRepositoryInterface
     }
 
     /**
-     * @param $Id
-     * @return \Task\Employee\Api\Data\EmployeeInterface
+     * Return the Employee Data by Employee Id
+     *
+     * @param int $Id
+     * @return \Task\Employee\Api\Data\EmployeeInterface|array
      */
     public function getDataById($Id)
     {

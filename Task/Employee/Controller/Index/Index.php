@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Task\Employee\Controller\Index;
 
 use Magento\Framework\App\Action\Action;
@@ -38,6 +37,7 @@ class Index extends Action
      * @param JsonFactory $resultJsonFactory
      * @param EmployeeRepositoryInterface $employeeRepository
      * @param PageFactory $pageFactory
+     * @param EmployeeAddressRepositoryInterface $employeeAddressRepository
      */
     public function __construct(
         Context $context,
@@ -54,6 +54,8 @@ class Index extends Action
     }
 
     /**
+     * Return the Json Data
+     *
      * @return ResponseInterface|\Magento\Framework\Controller\Result\Json|ResultInterface|\Task\Employee\Api\Data\EmployeeInterface
      */
     public function execute()

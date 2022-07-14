@@ -17,6 +17,11 @@ class EmployeeAddressRepositoryInterface
      */
     private EmployeeAddressExtensionFactory $employeeAddressExtensionFactory;
 
+    /**
+     * EmployeeAddressRepositoryInterface constructor.
+     * @param EmployeeRepositoryModel $employeeRepositoryModel
+     * @param EmployeeAddressExtensionFactory $employeeAddressExtensionFactory
+     */
     public function __construct(
         EmployeeRepositoryModel $employeeRepositoryModel,
         EmployeeAddressExtensionFactory $employeeAddressExtensionFactory
@@ -26,9 +31,10 @@ class EmployeeAddressRepositoryInterface
     }
 
     /**
-     * Adding extension attribute first_name to getById
+     * Adding extension attribute Employee Details to getById
+     *
      * @param \Task\Employee\Api\EmployeeAddressRepositoryInterface $subject
-     * @param \Task\Employee\Api\Data\EmployeeAddressInterface $employee
+     * @param \Task\Employee\Api\Data\EmployeeAddressInterface $employeeAddress
      * @return \Task\Employee\Api\Data\EmployeeAddressInterface
      */
     public function afterGetById(
@@ -37,7 +43,7 @@ class EmployeeAddressRepositoryInterface
     ) {
         $EmployeeData=$this->employeeRepository->getDataById($employeeAddress->getAddressId());
         $extensionAttributes=$employeeAddress->getExtensionAttributes();
-        $employeeExtension = $extensionAttributes ? $extensionAttributes : $this->employeeAddressExtensionFactory->create();
+        $employeeExtension = $extensionAttributes ?:$this->employeeAddressExtensionFactory->create();
         $employeeExtension->setEmployeeDetails($EmployeeData);
         $employeeAddress->setExtensionAttributes($employeeExtension);
         return $employeeAddress;

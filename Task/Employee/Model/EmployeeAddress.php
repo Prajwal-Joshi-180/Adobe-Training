@@ -3,7 +3,6 @@
 
 namespace Task\Employee\Model;
 
-use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\AbstractExtensibleModel;
 use Task\Employee\Model\ResourceModel\EmployeeAddress as ResourceModel;
 use Task\Employee\Api\Data\EmployeeAddressInterface;
@@ -20,6 +19,8 @@ class EmployeeAddress extends AbstractExtensibleModel implements EmployeeAddress
     }
 
     /**
+     * Return Entity Id
+     *
      * @return int
      */
     public function getEntityId(): int
@@ -28,6 +29,8 @@ class EmployeeAddress extends AbstractExtensibleModel implements EmployeeAddress
     }
 
     /**
+     * Sets Entity Id
+     *
      * @param int $entityId
      * @return EmployeeAddressInterface
      */
@@ -37,6 +40,8 @@ class EmployeeAddress extends AbstractExtensibleModel implements EmployeeAddress
     }
 
     /**
+     * Return Address Id
+     *
      * @return int
      */
     public function getAddressId(): int
@@ -45,7 +50,9 @@ class EmployeeAddress extends AbstractExtensibleModel implements EmployeeAddress
     }
 
     /**
-     * @param $addressId
+     * Sets Address Id
+     *
+     * @param int $addressId
      * @return EmployeeAddressInterface
      */
     public function setAddressId($addressId): EmployeeAddressInterface
@@ -54,6 +61,8 @@ class EmployeeAddress extends AbstractExtensibleModel implements EmployeeAddress
     }
 
     /**
+     * Return Permanent Address
+     *
      * @return string
      */
     public function getPermanentAddress(): string
@@ -62,7 +71,9 @@ class EmployeeAddress extends AbstractExtensibleModel implements EmployeeAddress
     }
 
     /**
-     * @param $address
+     * Sets Permanent Address
+     *
+     * @param String $address
      * @return EmployeeAddressInterface
      */
     public function setPermanentAddress($address): EmployeeAddressInterface
@@ -71,6 +82,8 @@ class EmployeeAddress extends AbstractExtensibleModel implements EmployeeAddress
     }
 
     /**
+     * Return Temporary Address
+     *
      * @return string
      */
     public function getTemporaryAddress(): string
@@ -79,7 +92,9 @@ class EmployeeAddress extends AbstractExtensibleModel implements EmployeeAddress
     }
 
     /**
-     * @param $tempaddress
+     * Sets the Temporary Address
+     *
+     * @param string $tempaddress
      * @return EmployeeAddressInterface
      */
     public function setTemporaryAddress($tempaddress): EmployeeAddressInterface
@@ -88,6 +103,8 @@ class EmployeeAddress extends AbstractExtensibleModel implements EmployeeAddress
     }
 
     /**
+     * Return the Created Date
+     *
      * @return string
      */
     public function getCreatedAt(): string
@@ -96,7 +113,9 @@ class EmployeeAddress extends AbstractExtensibleModel implements EmployeeAddress
     }
 
     /**
-     * @param $date
+     * Sets the Created Date
+     *
+     * @param string $date
      * @return EmployeeAddressInterface
      */
     public function setCreatedAt($date): EmployeeAddressInterface
@@ -112,9 +131,7 @@ class EmployeeAddress extends AbstractExtensibleModel implements EmployeeAddress
     }
 
     /**
-     * @inheritDocs
-     *
-     * @return $this
+     * @inheritDoc
      */
     public function setExtensionAttributes(EmployeeAddressExtensionInterface $extensionAttributes)
     {

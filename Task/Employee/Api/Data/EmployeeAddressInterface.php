@@ -4,6 +4,7 @@
 namespace Task\Employee\Api\Data;
 
 use Magento\Framework\Api\ExtensibleDataInterface;
+use Task\Employee\Api\Data\EmployeeAddressExtensionInterface;
 
 interface EmployeeAddressInterface extends ExtensibleDataInterface
 {
@@ -14,67 +15,91 @@ interface EmployeeAddressInterface extends ExtensibleDataInterface
     public const CREATED_AT = 'created_at';
 
     /**
+     * Return Entity Id
+     *
      * @return int
      */
     public function getEntityId(): int;
 
     /**
-     * @param $entityId
+     * Sets Entity Id
+     *
+     * @param int $entityId
      * @return EmployeeAddressInterface
      */
     public function setEntityId($entityId): EmployeeAddressInterface;
 
     /**
+     * Return Address Id
+     *
      * @return int
      */
     public function getAddressId(): int;
 
     /**
-     * @param $addressId
+     * Sets Address Id
+     *
+     * @param int $addressId
      * @return EmployeeAddressInterface
      */
     public function setAddressId($addressId): EmployeeAddressInterface;
 
     /**
+     * Return Permanent Address
+     *
      * @return string
      */
     public function getPermanentAddress(): string;
 
     /**
-     * @param $address
+     * Sets Permanent Address
+     *
+     * @param String $address
      * @return EmployeeAddressInterface
      */
     public function setPermanentAddress($address): EmployeeAddressInterface;
 
     /**
+     * Return Temporary Address
+     *
      * @return string
      */
     public function getTemporaryAddress(): string;
 
     /**
-     * @param $tempaddress
+     * Sets the Temporary Address
+     *
+     * @param string $tempaddress
      * @return EmployeeAddressInterface
      */
     public function setTemporaryAddress($tempaddress): EmployeeAddressInterface;
 
     /**
+     * Return the Created Date
+     *
      * @return string
      */
     public function getCreatedAt(): string;
 
     /**
-     * @param $date
+     * Sets the Created Date
+     *
+     * @param string $date
      * @return EmployeeAddressInterface
      */
     public function setCreatedAt($date): EmployeeAddressInterface;
     /**
+     * Return the Extension attribute
+     *
      * @return \Task\Employee\Api\Data\EmployeeAddressExtensionInterface
      */
     public function getExtensionAttributes();
 
     /**
+     * Sets the extension attribute
+     *
      * @param \Task\Employee\Api\Data\EmployeeAddressExtensionInterface $extensionAttributes
      * @return $this
      */
-    public function setExtensionAttributes(\Task\Employee\Api\Data\EmployeeAddressExtensionInterface $extensionAttributes);
+    public function setExtensionAttributes(EmployeeAddressExtensionInterface $extensionAttributes);
 }

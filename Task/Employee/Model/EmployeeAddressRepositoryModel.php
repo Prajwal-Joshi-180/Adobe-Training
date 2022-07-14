@@ -62,8 +62,10 @@ class EmployeeAddressRepositoryModel implements EmployeeAddressRepositoryInterfa
     }
 
     /**
-     * @param $addressId
-     * @return \Task\Employee\Api\Data\EmployeeAddressInterface
+     * Return the Address Data by ID
+     *
+     * @param int $addressId
+     * @return \Task\Employee\Api\Data\EmployeeAddressInterface|array
      */
     public function getByAddressId($addressId)
     {

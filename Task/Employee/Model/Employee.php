@@ -19,6 +19,7 @@ class Employee extends AbstractExtensibleModel implements EmployeeInterface
     }
 
     /**
+     * Return the Employee Id
      *
      * @return int
      */
@@ -28,6 +29,8 @@ class Employee extends AbstractExtensibleModel implements EmployeeInterface
     }
 
     /**
+     * Sets the ID
+     *
      * @param int $Id
      * @return EmployeeInterface
      */
@@ -37,6 +40,8 @@ class Employee extends AbstractExtensibleModel implements EmployeeInterface
     }
 
     /**
+     * Return the status
+     *
      * @return bool
      */
     public function getIsActive()
@@ -45,6 +50,8 @@ class Employee extends AbstractExtensibleModel implements EmployeeInterface
     }
 
     /**
+     * Sets the Status
+     *
      * @param bool $value
      * @return EmployeeInterface
      */
@@ -54,7 +61,10 @@ class Employee extends AbstractExtensibleModel implements EmployeeInterface
     }
 
     /**
-     * @return string
+     * Sets the First Name
+     *
+     * @param string $firstname
+     * @return EmployeeInterface
      */
     public function getFirstName(): string
     {
@@ -62,7 +72,9 @@ class Employee extends AbstractExtensibleModel implements EmployeeInterface
     }
 
     /**
-     * @param $firstname
+     * Sets the First Name
+     *
+     * @param string $firstname
      * @return EmployeeInterface
      */
     public function setFirstName($firstname): EmployeeInterface
@@ -71,6 +83,8 @@ class Employee extends AbstractExtensibleModel implements EmployeeInterface
     }
 
     /**
+     * Return the Last Name
+     *
      * @return string
      */
     public function getLastName(): string
@@ -79,15 +93,19 @@ class Employee extends AbstractExtensibleModel implements EmployeeInterface
     }
 
     /**
-     * @param $lastname
+     * Sets the Last Name
+     *
+     * @param string $lastname
      * @return EmployeeInterface
      */
     public function setLastName($lastname): EmployeeInterface
     {
-        return $this->setData(self::LaLAST_NAMEs, $lastname);
+        return $this->setData(self::LAST_NAME, $lastname);
     }
 
     /**
+     * Return the Date of Birth
+     *
      * @return string
      */
     public function getDob(): string
@@ -96,7 +114,9 @@ class Employee extends AbstractExtensibleModel implements EmployeeInterface
     }
 
     /**
-     * @param $dob
+     * Sets the Date of Birth
+     *
+     * @param string $dob
      * @return EmployeeInterface
      */
     public function setDob($dob): EmployeeInterface
@@ -105,6 +125,8 @@ class Employee extends AbstractExtensibleModel implements EmployeeInterface
     }
 
     /**
+     * Return the Created Date
+     *
      * @return string
      */
     public function getCreatedAt(): string
@@ -113,7 +135,9 @@ class Employee extends AbstractExtensibleModel implements EmployeeInterface
     }
 
     /**
-     * @param $date
+     * Sets the Created Date
+     *
+     * @param string $date
      * @return EmployeeInterface
      */
     public function setCreatedAt($date): EmployeeInterface
@@ -122,6 +146,8 @@ class Employee extends AbstractExtensibleModel implements EmployeeInterface
     }
 
     /**
+     * Return The price
+     *
      * @return float
      */
     public function getPrice(): float
@@ -130,7 +156,9 @@ class Employee extends AbstractExtensibleModel implements EmployeeInterface
     }
 
     /**
-     * @param $price
+     * Sets the Price
+     *
+     * @param float $price
      * @return EmployeeInterface
      */
     public function setPrice($price): EmployeeInterface
@@ -139,6 +167,8 @@ class Employee extends AbstractExtensibleModel implements EmployeeInterface
     }
 
     /**
+     * Return the Weight
+     *
      * @return float
      */
     public function getWeight(): float
@@ -147,7 +177,9 @@ class Employee extends AbstractExtensibleModel implements EmployeeInterface
     }
 
     /**
-     * @param $weight
+     * Sets the Weight
+     *
+     * @param float $weight
      * @return EmployeeInterface
      */
     public function setWeight($weight): EmployeeInterface
@@ -164,9 +196,7 @@ class Employee extends AbstractExtensibleModel implements EmployeeInterface
     }
 
     /**
-     * @inheritDocs
-     *
-     * @return $this
+     * @inheritDoc
      */
     public function setExtensionAttributes(EmployeeExtensionInterface $extensionAttributes)
     {

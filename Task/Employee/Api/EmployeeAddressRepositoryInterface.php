@@ -13,7 +13,9 @@ interface EmployeeAddressRepositoryInterface
     public function getById($Id);
 
     /**
-     * @param $addressId
+     * Return the Address Data by ID
+     *
+     * @param int $addressId
      * @return Data\EmployeeAddressInterface
      */
     public function getByAddressId($addressId);
