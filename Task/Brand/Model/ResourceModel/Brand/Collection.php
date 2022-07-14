@@ -5,7 +5,7 @@ namespace Task\Brand\Model\ResourceModel\Brand;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 use Task\Brand\Model\Employee as Model;
-use Task\Brand\Model\ResourceModel\Employee as ResourceModel;
+use Task\Brand\Model\ResourceModel\Brand as ResourceModel;
 
 class Collection extends AbstractCollection
 {
