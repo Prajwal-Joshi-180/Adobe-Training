@@ -49,16 +49,16 @@ class EmployeeAddressRepositoryModel implements EmployeeAddressRepositoryInterfa
     }
 
     /**
-     * Return Data[]
+     * Get Student Data by Id
      *
      * @param int $Id
-     * @return array Data
+     * @return \Task\Employee\Model\EmployeeAddress
      */
-    public function getById(int $Id)
+    public function getById($Id)
     {
         $model=$this->modelFactory->create();
         $this->resourceModel->load($model, $Id);
-        return $model->getData();
+        return $model;
     }
 
     /**

@@ -8,9 +8,9 @@ interface EmployeeAddressRepositoryInterface
      * Return Data[]
      *
      * @param int $Id
-     * @return array Data[]
+     * @return \Task\Employee\Api\Data\EmployeeAddressInterface
      */
-    public function getById(int $Id);
+    public function getById($Id);
 
     /**
      * @param $addressId

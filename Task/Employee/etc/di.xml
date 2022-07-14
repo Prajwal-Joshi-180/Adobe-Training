@@ -7,4 +7,8 @@
         <plugin name="employee_reository_plugin"
                 type="Task\Employee\Plugin\EmployeeRepositoryInterface" sortOrder="1"/>
     </type>
+    <type name="Task\Employee\Api\EmployeeAddressRepositoryInterface">
+        <plugin name="employee_address_plugin"
+                type="Task\Employee\Plugin\EmployeeAddressRepositoryInterface" sortOrder="1"/>
+    </type>
 </config>

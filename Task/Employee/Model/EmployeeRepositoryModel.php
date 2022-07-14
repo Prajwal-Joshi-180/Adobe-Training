@@ -100,4 +100,16 @@ class EmployeeRepositoryModel implements EmployeeRepositoryInterface
         $collection= $this->getCollection()->addFieldToFilter('id', ['in'=>$Ids]);
         return $collection->getData();
     }
+
+    /**
+     * @param $Id
+     * @return \Task\Employee\Api\Data\EmployeeInterface
+     */
+    public function getDataById($Id)
+    {
+        $object=$this->modelFactory->create();
+        $collection=$object->getCollection();
+        $collection->addFieldToFilter('id', $Id);
+        return $collection->getData();
+    }
 }

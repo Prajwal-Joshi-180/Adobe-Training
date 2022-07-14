@@ -7,6 +7,7 @@ use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\AbstractExtensibleModel;
 use Task\Employee\Model\ResourceModel\EmployeeAddress as ResourceModel;
 use Task\Employee\Api\Data\EmployeeAddressInterface;
+use Task\Employee\Api\Data\EmployeeAddressExtensionInterface;
 
 class EmployeeAddress extends AbstractExtensibleModel implements EmployeeAddressInterface
 {
@@ -101,5 +102,22 @@ class EmployeeAddress extends AbstractExtensibleModel implements EmployeeAddress
     public function setCreatedAt($date): EmployeeAddressInterface
     {
         return $this->setData(self::CREATED_AT, $date);
+    }
+    /**
+     * @inheritDoc
+     */
+    public function getExtensionAttributes()
+    {
+        return $this->_getExtensionAttributes();
+    }
+
+    /**
+     * @inheritDocs
+     *
+     * @return $this
+     */
+    public function setExtensionAttributes(EmployeeAddressExtensionInterface $extensionAttributes)
+    {
+        return $this->_setExtensionAttributes($extensionAttributes);
     }
 }

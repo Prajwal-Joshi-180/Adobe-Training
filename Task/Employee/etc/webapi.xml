@@ -15,4 +15,10 @@
             <resource ref="anonymous"/>
         </resources>
     </route>
+    <route url="/V1/task/employeeaddres/:Id" method="GET">
+        <service class="Task\Employee\Api\EmployeeAddressRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
 </routes>

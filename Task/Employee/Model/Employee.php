@@ -37,7 +37,7 @@ class Employee extends AbstractExtensibleModel implements EmployeeInterface
     }
 
     /**
-     * @return mixed|null
+     * @return bool
      */
     public function getIsActive()
     {
@@ -166,7 +166,7 @@ class Employee extends AbstractExtensibleModel implements EmployeeInterface
     /**
      * @inheritDocs
      *
-     * @return void
+     * @return $this
      */
     public function setExtensionAttributes(EmployeeExtensionInterface $extensionAttributes)
     {

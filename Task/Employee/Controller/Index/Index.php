@@ -11,6 +11,7 @@ use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Task\Employee\Api\EmployeeRepositoryInterface;
+use Task\Employee\Api\EmployeeAddressRepositoryInterface;
 
 class Index extends Action
 {
@@ -26,6 +27,10 @@ class Index extends Action
      * @var JsonFactory
      */
     private JsonFactory $resultJsonFactory;
+    /**
+     * @var EmployeeAddressRepositoryInterface
+     */
+    private EmployeeAddressRepositoryInterface $employeeAddressRepository;
 
     /**
      * View constructor.
@@ -38,12 +43,14 @@ class Index extends Action
         Context $context,
         JsonFactory $resultJsonFactory,
         EmployeeRepositoryInterface $employeeRepository,
-        PageFactory $pageFactory
+        PageFactory $pageFactory,
+        EmployeeAddressRepositoryInterface $employeeAddressRepository
     ) {
         parent::__construct($context);
         $this->resultJsonFactory=$resultJsonFactory;
         $this->employeeRepository=$employeeRepository;
         $this->pageFactory = $pageFactory;
+        $this->employeeAddressRepository=$employeeAddressRepository;
     }
 
     /**
@@ -53,12 +60,9 @@ class Index extends Action
     {
         $resultJson=$this->resultJsonFactory->create();
         try {
-//            $employee=$this->employeeRepository->getDataByIds(['1','2']);
-//            return $resultJson->setData($employee);
-//            $collection=$this->employeeRepository->getCollection()->getData();
-            $collection=$this->employeeRepository->getById(1);
+            $collection=$this->employeeRepository->getById(1)->getData();
             echo "<pre>";
-            var_dump($collection->getData());die();
+            var_dump($collection);die();
             return $collection;
         } catch (NoSuchEntityException $e) {
              return $resultJson->setData($e->getMessage());

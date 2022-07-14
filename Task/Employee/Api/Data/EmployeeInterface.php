@@ -19,7 +19,7 @@ interface EmployeeInterface extends ExtensibleDataInterface
     /**
      * @return int
      */
-    public function getId(): int;
+    public function getId();
 
     /**
      * @param int $Id
@@ -28,7 +28,7 @@ interface EmployeeInterface extends ExtensibleDataInterface
     public function setId($Id): EmployeeInterface;
 
     /**
-     * @return mixed
+     * @return bool
      */
     public function getIsActive();
 
@@ -111,7 +111,7 @@ interface EmployeeInterface extends ExtensibleDataInterface
 
     /**
      * @param EmployeeExtensionInterface $extensionAttributes
-     * @return mixed
+     * @return $this
      */
     public function setExtensionAttributes(\Task\Employee\Api\Data\EmployeeExtensionInterface $extensionAttributes);
 }

@@ -67,4 +67,14 @@ interface EmployeeAddressInterface extends ExtensibleDataInterface
      * @return EmployeeAddressInterface
      */
     public function setCreatedAt($date): EmployeeAddressInterface;
+    /**
+     * @return \Task\Employee\Api\Data\EmployeeAddressExtensionInterface
+     */
+    public function getExtensionAttributes();
+
+    /**
+     * @param \Task\Employee\Api\Data\EmployeeAddressExtensionInterface $extensionAttributes
+     * @return $this
+     */
+    public function setExtensionAttributes(\Task\Employee\Api\Data\EmployeeAddressExtensionInterface $extensionAttributes);
 }
