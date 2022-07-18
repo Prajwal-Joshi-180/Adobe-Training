@@ -23,7 +23,7 @@ class Employee extends AbstractExtensibleModel implements EmployeeInterface
      *
      * @return int
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->getData(self::ID);
     }

@@ -3,6 +3,7 @@
     <preference for="Task\Employee\Api\Data\EmployeeInterface" type="Task\Employee\Model\Employee" />
     <preference for="Task\Employee\Api\EmployeeAddressRepositoryInterface" type="Task\Employee\Model\EmployeeAddressRepositoryModel" />
     <preference for="Task\Employee\Api\Data\EmployeeAddressInterface" type="Task\Employee\Model\EmployeeAddress" />
+    <preference for="Task\Employee\Api\Data\EmployeeSearchResultInterface" type="Task\Employee\Model\EmployeeSearchResult" />
     <type name="Task\Employee\Api\EmployeeRepositoryInterface">
         <plugin name="employee_reository_plugin"
                 type="Task\Employee\Plugin\EmployeeRepositoryInterface" sortOrder="1"/>
