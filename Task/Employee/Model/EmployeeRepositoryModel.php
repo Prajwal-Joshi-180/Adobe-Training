@@ -130,11 +130,11 @@ class EmployeeRepositoryModel implements EmployeeRepositoryInterface
      */
     public function getList(SearchCriteriaInterface $searchCriteria)
     {
-        $colleaaction= $this->collectionFactory->create();
-        $this->collectionProcessor->process($searchCriteria, ($colleaaction));
+        $collection= $this->collectionFactory->create();
+        $this->collectionProcessor->process($searchCriteria, ($collection));
         $searchResult=$this->employeeSearchResultInterfaceFactory->create();
-        $searchResult->setItems($colleaaction->getItems());
-        $searchResult->setTotalCount($colleaaction->getSize());
+        $searchResult->setItems($collection->getItems());
+        $searchResult->setTotalCount($collection->getSize());
         $searchResult->setSearchCriteria($searchCriteria);
         return $searchResult;
     }

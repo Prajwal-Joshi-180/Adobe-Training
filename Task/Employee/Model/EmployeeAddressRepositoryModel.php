@@ -9,6 +9,9 @@ use Task\Employee\Model\EmployeeAddressFactory as ModelFactory;
 use Task\Employee\Model\ResourceModel\EmployeeAddress as ResourceModel;
 use Task\Employee\Model\ResourceModel\EmployeeAddress\Collection;
 use Task\Employee\Model\ResourceModel\EmployeeAddress\CollectionFactory;
+use Magento\Framework\Api\SearchCriteriaInterface;
+use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
+use Task\Employee\Api\Data\EmployeeSearchResultInterfaceFactory;
 
 class EmployeeAddressRepositoryModel implements EmployeeAddressRepositoryInterface
 {
@@ -28,6 +31,18 @@ class EmployeeAddressRepositoryModel implements EmployeeAddressRepositoryInterfa
      * @var CollectionFactory
      */
     private CollectionFactory $collectionFactory;
+    /**
+     * @var SearchCriteriaInterface
+     */
+    private SearchCriteriaInterface $searchCriteria;
+    /**
+     * @var EmployeeSearchResultInterfaceFactory
+     */
+    private EmployeeSearchResultInterfaceFactory $employeeSearchResultInterfaceFactory;
+    /**
+     * @var CollectionProcessorInterface
+     */
+    private CollectionProcessorInterface $collectionProcessor;
 
     /**
      * EmployeeAddressRepositoryModel constructor.
@@ -40,12 +55,18 @@ class EmployeeAddressRepositoryModel implements EmployeeAddressRepositoryInterfa
         CollectionFactory $collectionFactory,
         Collection $collection,
         ModelFactory $modelFactory,
-        ResourceModel $resourceModel
+        ResourceModel $resourceModel,
+        SearchCriteriaInterface $searchCriteria,
+        CollectionProcessorInterface $collectionProcessor,
+        EmployeeSearchResultInterfaceFactory $employeeSearchResultInterfaceFactory
     ) {
         $this->modelFactory=$modelFactory;
         $this->collection=$collection;
         $this->resourceModel=$resourceModel;
         $this->collectionFactory=$collectionFactory;
+        $this->searchCriteria=$searchCriteria;
+        $this->collectionProcessor=$collectionProcessor;
+        $this->employeeSearchResultInterfaceFactory=$employeeSearchResultInterfaceFactory;
     }
 
     /**
@@ -82,5 +103,21 @@ class EmployeeAddressRepositoryModel implements EmployeeAddressRepositoryInterfa
     public function getCollection()
     {
         return $this->collectionFactory->create();
+    }
+    /**
+     * Return the List
+     *
+     * @param SearchCriteriaInterface $searchCriteria
+     * @return \Task\Employee\Api\Data\EmployeeSearchResultInterface
+     */
+    public function getList(SearchCriteriaInterface $searchCriteria)
+    {
+        $collection =$this->collectionFactory->create();
+        $this->collectionProcessor->process($searchCriteria, ($collection));
+        $searchResult=$this->employeeSearchResultInterfaceFactory->create();
+        $searchResult->setItems($collection->getItems());
+        $searchResult->setTotalCount($collection->getSize());
+        $searchResult->setSearchCriteria($searchCriteria);
+        return $searchResult;
     }
 }

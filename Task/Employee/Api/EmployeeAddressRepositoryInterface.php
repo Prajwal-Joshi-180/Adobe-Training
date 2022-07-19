@@ -1,6 +1,7 @@
 <?php
 
 namespace Task\Employee\Api;
+use Magento\Framework\Api\SearchCriteriaInterface;
 
 interface EmployeeAddressRepositoryInterface
 {
@@ -26,4 +27,11 @@ interface EmployeeAddressRepositoryInterface
      * @return array Collection[]
      */
     public function getCollection();
+    /**
+     * Return the List
+     *
+     * @param SearchCriteriaInterface $searchCriteria
+     * @return \Task\Employee\Api\Data\EmployeeSearchResultInterface
+     */
+    public function getList(SearchCriteriaInterface $searchCriteria);
 }

@@ -3,8 +3,8 @@
 /** @var \Magento\Framework\Escaper $escaper */
 $employees=$block->getAllEmployees();
 ?>
-<h2>Employee Details</h2>
-<button><a href="<?= $block->getEditUrl() ?>" >Add Employee</a> </button>
+<button><a href="<?= $escaper->escapeUrl($block->getEditUrl())?>"><?= $escaper->escapeHtml('Add Employee')?></a></button>
+<h2><?= $escaper->escapeHtml('Employee Details')?> </h2>
 <div class="employee-listing">
     <?php if (count($employees) > 0):?>
         <table>
@@ -30,14 +30,14 @@ $employees=$block->getAllEmployees();
                     <td><?= $escaper->escapeHtml($employee->getWeight()) ?> </td>
                     <td>
                         <span>
-                            <button><a href="<?= $block->getEditUrl().'id/'.$employee->getId()?>">Edit</a></button>
-                            <button><a href="<?= $block->getDeleteUrl().'id/'.$employee->getId()?>">Delete</a></button>
+                            <button><a href="<?= $escaper->escapeUrl($block->getEditUrl().'id/'.$employee->getId())?>"><?= $escaper->escapeHtml('Edit')?></a></button>
+                            <button><a href="<?= $escaper->escapeUrl($block->getDeleteUrl().'id/'.$employee->getId())?>"><?= $escaper->escapeHtml('Delete')?></a></button>
                         </span>
                     </td>
                 </tr>
             <?php endforeach; ?>
         </table>
     <?php else: ?>
-        <h3> Empty Employee List </h3>
+        <h3><?=$escaper->escapeHtml('Empty Employee List')?></h3>
     <?php endif; ?>
 </div>

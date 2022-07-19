@@ -6,6 +6,7 @@ use Task\Employee\Model\ResourceModel\Employee\CollectionFactory;
 use Task\Employee\Model\EmployeeAddressRepositoryModel;
 use Task\Employee\Api\Data\EmployeeExtensionFactory;
 use Task\Employee\Api\EmployeeRepositoryExtension;
+use Magento\Framework\Api\SearchCriteriaBuilder;
 
 class EmployeeRepositoryInterface
 {
@@ -37,12 +38,14 @@ class EmployeeRepositoryInterface
         CollectionFactory $collectionFactory,
         EmployeeAddressRepositoryModel $addressRepository,
         EmployeeExtensionFactory $employeeExtensionFactory,
-        EmployeeRepositoryExtension $employeeRepositoryExtension
+        EmployeeRepositoryExtension $employeeRepositoryExtension,
+        SearchCriteriaBuilder $searchCriteriaBuilder
     ) {
         $this->collectionFactory = $collectionFactory;
         $this->addressRepository = $addressRepository;
         $this->employeeExtensionFactory=$employeeExtensionFactory;
         $this->employeeRepositoryExtension = $employeeRepositoryExtension;
+        $this->searchCriteriaBuilder=$searchCriteriaBuilder;
     }
 
     /**
@@ -56,9 +59,10 @@ class EmployeeRepositoryInterface
         \Task\Employee\Api\EmployeeRepositoryInterface $subject,
         \Task\Employee\Api\Data\EmployeeInterface $employee
     ) {
-        $AddressData=$this->addressRepository->getByAddressId($employee->getId());
+        $filter=$this->searchCriteriaBuilder->addFilter('address_id', $employee->getId());
         $extensionAttributes=$employee->getExtensionAttributes();
         $employeeExtension = $extensionAttributes ? : $this->employeeExtensionFactory->create();
+        $AddressData= $this->addressRepository->getList($filter->create())->getItems();
         $employeeExtension->setAddressItems($AddressData);
         $employee->setExtensionAttributes($employeeExtension);
         return $employee;

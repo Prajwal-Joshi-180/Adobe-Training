@@ -4,42 +4,41 @@
 
 $EmployeeData=$block->getUpdate();
 ?>
-<form method="POST" action="<?= $block->getSaveUrl() ?>" >
-    <h3>Edit Employee Details</h3>
+<form method="POST" action="<?= $escaper->escapeUrl($$block->getSaveUrl())?>" >
+    <h3><?=$escaper->escapeHtml('Edit Employee Details')?></h3>
     <?php if ($EmployeeData['id']):?>
         <div>
             <label>ID</label>
-            <input name="id" type="text" value="<?= $EmployeeData['id']??null?>" readonly/>
+            <input name="id" type="text" value="<?= $escaper->escapeHtml($EmployeeData['id']??null)?>" readonly/>
         </div>
     <?php endif;?>
     <div>
         <label>Is Active</label>
-        <input name="is_active" type="text" value="<?= $EmployeeData['is_active']??null?>"/>
+        <input name="is_active" type="text" value="<?= $escaper->escapeHtml($EmployeeData['is_active']??null)?>"/>
     </div>
     <div>
         <label>First Name</label>
-        <input name="first_name" type="text" value="<?= $EmployeeData['first_name']??null?>"/>
+        <input name="first_name" type="text" value="<?= $escaper->escapeHtml($EmployeeData['first_name']??null)?>"/>
     </div>
     <div>
         <label>Last Name</label>
-        <input name="last_name" type="text" value="<?= $EmployeeData['last_name']??null?>"/>
+        <input name="last_name" type="text" value="<?= $escaper->escapeHtml($EmployeeData['last_name']??null)?>"/>
     </div>
     <div>
         <label>Date of Birth</label>
-        <input name="dob" type="date" value="<?= $EmployeeData['dob']??null?>"/>
+        <input name="dob" type="date" value="<?= $escaper->escapeHtml($EmployeeData['dob']??null)?>"/>
     </div>
     <div>
         <label>Price</label>
-        <input name="price" type="text" value="<?= $EmployeeData['price']??null?>"/>
+        <input name="price" type="text" value="<?= $escaper->escapeHtml($EmployeeData['price']??null)?>"/>
     </div>
     <div>
         <label>Weight</label>
-        <input name="weight" type="text" value="<?= $EmployeeData['weight']??null?>"/>
+        <input name="weight" type="text" value="<?= $escaper->escapeHtml($EmployeeData['weight']??null)?>"/>
     </div>
     <?php if ($EmployeeData['id']): ?>
-        <button> Update </button>
+        <button><?=$escaper->escapeHtml('Update')?></button>
     <?php else: ?>
-        <button> Save </button>
+        <button><?=$escaper->escapeHtml('Save')?></button>
     <?php endif; ?>
 </form>
-

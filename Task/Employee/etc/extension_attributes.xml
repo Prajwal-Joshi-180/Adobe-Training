@@ -3,7 +3,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
     <extension_attributes for="Task\Employee\Api\Data\EmployeeInterface">
-        <attribute code="address_items" type="Task\Employee\Api\Data\EmployeeeAddressInterface[]"/>
+        <attribute code="address_items" type="Task\Employee\Api\Data\EmployeeAddressInterface[]"/>
     </extension_attributes>
     <extension_attributes for="Task\Employee\Api\Data\EmployeeAddressInterface">
         <attribute code="employee_details" type="Task\Employee\Api\Data\EmployeeInterface[]"/>
