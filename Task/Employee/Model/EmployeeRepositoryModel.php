@@ -161,4 +161,35 @@ class EmployeeRepositoryModel implements EmployeeRepositoryInterface
         $this->resourceModel->load($model, $value, $field);
         return $model;
     }
+    /**
+     * @inheritDoc
+     */
+    public function saveData($data)
+    {
+        $model= $this->create();
+        if (!empty($data['id'])) {
+            $model=$this->load($data['id']);
+        }
+        $model->setIsActive($data['is_active']);
+        $model->setFirstName($data['first_name']);
+        $model->setLastName($data['last_name']);
+        $model->setDob($data['dob']);
+        $model->setPrice($data['price']);
+        $model->setWeight($data['weight']);
+        $this->save($model);
+        if (!empty($data['id'])) {
+            return $model->getFirstName()." Edited Successfully";
+        }
+        return $model->getFirstName()." Saved Successfully";
+    }
+    /**
+     * @inheritDoc
+     */
+    public function deleteData($Id)
+    {
+        $model=$this->load($Id);
+        $name=$model->getFirstName();
+        $model->delete();
+        return $name." Deleted Successfully";
+    }
 }

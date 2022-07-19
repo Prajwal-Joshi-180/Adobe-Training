@@ -29,6 +29,8 @@ class Delete extends Action
     }
 
     /**
+     * Delete the Employee by id
+     *
      * @return ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
      */
     public function execute()

@@ -30,6 +30,8 @@ class Save extends Action
     }
 
     /**
+     * Save the Employeee Details
+     *
      * @return ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
      */
     public function execute()
@@ -47,7 +49,7 @@ class Save extends Action
         $model->setWeight($data['weight']);
         try {
             $this->employeeRepository->save($model);
-            $this->messageManager->addSuccessMessage(__('%1 Updated Successfully', $model->getFirstName()));
+            $this->messageManager->addSuccessMessage(__('%1 Saved Successfully', $model->getFirstName()));
         } catch (\Exception $exception) {
             $this->messageManager->addErrorMessage(__("Error saving Brand"));
         }

@@ -71,4 +71,19 @@ interface EmployeeRepositoryInterface
      * @return \Task\Employee\Model\Employee
      */
     public function load($value, $field = null);
+
+    /**
+     * Save and Edit the data using Api
+     *
+     * @param EmployeeInterface $data
+     * @return string
+     */
+    public function saveData($data);
+    /**
+     * Delete The data using Api
+     *
+     * @param int  $Id
+     * @return string
+     */
+    public function deleteData($Id);
 }

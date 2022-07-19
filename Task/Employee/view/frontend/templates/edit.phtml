@@ -6,11 +6,11 @@ $EmployeeData=$block->getUpdate();
 ?>
 <form method="POST" action="<?= $block->getSaveUrl() ?>" >
     <h3>Edit Employee Details</h3>
-    <?php if($EmployeeData['id']): ?>
-    <div>
-        <label>ID</label>
-        <input name="id" type="text" value="<?= $EmployeeData['id']??null?>" readonly/>
-    </div>
+    <?php if ($EmployeeData['id']):?>
+        <div>
+            <label>ID</label>
+            <input name="id" type="text" value="<?= $EmployeeData['id']??null?>" readonly/>
+        </div>
     <?php endif;?>
     <div>
         <label>Is Active</label>
@@ -36,10 +36,10 @@ $EmployeeData=$block->getUpdate();
         <label>Weight</label>
         <input name="weight" type="text" value="<?= $EmployeeData['weight']??null?>"/>
     </div>
-    <?php if($EmployeeData['id']) : ?>
-    <button> Update </button>
+    <?php if ($EmployeeData['id']): ?>
+        <button> Update </button>
     <?php else: ?>
-    <button> Save </button>
+        <button> Save </button>
     <?php endif; ?>
 </form>
 

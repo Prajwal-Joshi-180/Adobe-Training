@@ -86,6 +86,8 @@ class Employee extends Template
     }
 
     /**
+     * Return the All Employee Details
+     *
      * @return \Magento\Framework\Api\ExtensibleDataInterface[]
      */
     public function getAllEmployees()

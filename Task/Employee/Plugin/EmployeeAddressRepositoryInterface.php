@@ -5,6 +5,7 @@ namespace Task\Employee\Plugin;
 
 use Task\Employee\Model\EmployeeRepositoryModel;
 use Task\Employee\Api\Data\EmployeeAddressExtensionFactory;
+use Magento\Framework\Api\SearchCriteriaBuilder;
 
 class EmployeeAddressRepositoryInterface
 {
@@ -21,13 +22,16 @@ class EmployeeAddressRepositoryInterface
      * EmployeeAddressRepositoryInterface constructor.
      * @param EmployeeRepositoryModel $employeeRepositoryModel
      * @param EmployeeAddressExtensionFactory $employeeAddressExtensionFactory
+     * @param SearchCriteriaBuilder $searchCriteriaBuilder
      */
     public function __construct(
         EmployeeRepositoryModel $employeeRepositoryModel,
-        EmployeeAddressExtensionFactory $employeeAddressExtensionFactory
+        EmployeeAddressExtensionFactory $employeeAddressExtensionFactory,
+        SearchCriteriaBuilder $searchCriteriaBuilder
     ) {
         $this->employeeRepository=$employeeRepositoryModel;
         $this->employeeAddressExtensionFactory=$employeeAddressExtensionFactory;
+        $this->searchCriteriaBuilder=$searchCriteriaBuilder;
     }
 
     /**
@@ -41,9 +45,10 @@ class EmployeeAddressRepositoryInterface
         \Task\Employee\Api\EmployeeAddressRepositoryInterface $subject,
         \Task\Employee\Api\Data\EmployeeAddressInterface $employeeAddress
     ) {
-        $EmployeeData=$this->employeeRepository->getDataById($employeeAddress->getAddressId());
+        $filter=$this->searchCriteriaBuilder->addFilter('id', $employeeAddress->getAddressId());
         $extensionAttributes=$employeeAddress->getExtensionAttributes();
         $employeeExtension = $extensionAttributes ?:$this->employeeAddressExtensionFactory->create();
+        $EmployeeData=$this->employeeRepository->getList($filter->create())->getItems();
         $employeeExtension->setEmployeeDetails($EmployeeData);
         $employeeAddress->setExtensionAttributes($employeeExtension);
         return $employeeAddress;
