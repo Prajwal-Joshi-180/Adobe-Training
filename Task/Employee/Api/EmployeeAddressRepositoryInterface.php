@@ -1,6 +1,7 @@
 <?php
 
 namespace Task\Employee\Api;
+
 use Magento\Framework\Api\SearchCriteriaInterface;
 
 interface EmployeeAddressRepositoryInterface

@@ -33,6 +33,7 @@ class EmployeeRepositoryInterface
      * @param EmployeeAddressRepositoryModel $addressRepository
      * @param EmployeeExtensionFactory $employeeExtensionFactory
      * @param EmployeeRepositoryExtension $employeeRepositoryExtension
+     * @param SearchCriteriaBuilder $searchCriteriaBuilder
      */
     public function __construct(
         CollectionFactory $collectionFactory,

@@ -4,7 +4,7 @@
 
 $EmployeeData=$block->getUpdate();
 ?>
-<form method="POST" action="<?= $escaper->escapeUrl($$block->getSaveUrl())?>" >
+<form method="POST" action="<?= $escaper->escapeUrl($block->getSaveUrl())?>" >
     <h3><?=$escaper->escapeHtml('Edit Employee Details')?></h3>
     <?php if ($EmployeeData['id']):?>
         <div>

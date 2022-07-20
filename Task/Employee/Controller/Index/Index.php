@@ -63,9 +63,7 @@ class Index extends Action
         $resultJson=$this->resultJsonFactory->create();
         try {
             $collection=$this->employeeRepository->getById(1)->getData();
-            echo "<pre>";
-            var_dump($collection);die();
-            return $collection;
+            return $resultJson->setData($collection);
         } catch (NoSuchEntityException $e) {
              return $resultJson->setData($e->getMessage());
         }

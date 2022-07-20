@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Task\Employee\Model;
 
 use Task\Employee\Api\EmployeeAddressRepositoryInterface;
@@ -50,6 +49,9 @@ class EmployeeAddressRepositoryModel implements EmployeeAddressRepositoryInterfa
      * @param Collection $collection
      * @param EmployeeAddressFactory $modelFactory
      * @param ResourceModel $resourceModel
+     * @param SearchCriteriaInterface $searchCriteria
+     * @param CollectionProcessorInterface $collectionProcessor
+     * @param EmployeeSearchResultInterfaceFactory $employeeSearchResultInterfaceFactory
      */
     public function __construct(
         CollectionFactory $collectionFactory,

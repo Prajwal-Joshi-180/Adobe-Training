@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Task\Employee\Model\ResourceModel\EmployeeAddress;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;

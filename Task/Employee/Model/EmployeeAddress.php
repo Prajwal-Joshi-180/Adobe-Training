@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Task\Employee\Model;
 
 use Magento\Framework\Model\AbstractExtensibleModel;
