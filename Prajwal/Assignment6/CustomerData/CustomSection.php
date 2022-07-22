@@ -31,7 +31,7 @@ class CustomSection implements SectionSourceInterface
     public function getSectionData()
     {
         return [
-            'customerdetail' =>date('H:i:s') .$this->customerSession->getCustomer()->getName(),
+            'customerdetail' =>$this->customerSession->getCustomer()->getName(),
         ];
     }
 }

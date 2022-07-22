@@ -2,4 +2,7 @@
     <action name="catalog/product/view">
         <section name="customsection"/>
     </action>
+    <action name="customer/account/loginPost">
+        <section name="customsection"/>
+    </action>
 </config>
