@@ -5,6 +5,8 @@ namespace Task\Employee\Controller\Index;
 
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\Result\Redirect;
+use Magento\Framework\Controller\ResultInterface;
 use Task\Employee\Api\EmployeeRepositoryInterface;
 use Magento\Framework\App\Action\Context;
 
@@ -32,7 +34,7 @@ class Save extends Action
     /**
      * Save the Employeee Details
      *
-     * @return ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
+     * @return ResponseInterface|Redirect|ResultInterface
      */
     public function execute()
     {

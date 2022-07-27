@@ -2,9 +2,9 @@
 
 namespace Task\Employee\Model;
 
-use Magento\Framework\Exception\NoSuchEntityException;
+use Task\Employee\Api\Data\EmployeeInterface;
+use Task\Employee\Api\Data\EmployeeSearchResultInterface;
 use Task\Employee\Api\EmployeeRepositoryInterface;
-use Task\Employee\Model\Employee as Model;
 use Task\Employee\Model\EmployeeFactory as ModelFactory;
 use Task\Employee\Model\ResourceModel\Employee as ResourceModel;
 use Task\Employee\Model\ResourceModel\Employee\Collection;
@@ -18,17 +18,17 @@ class EmployeeRepository implements EmployeeRepositoryInterface
     /**
      * @var EmployeeFactory
      */
-    private $modelFactory;
+    private EmployeeFactory $modelFactory;
 
     /**
      * @var ResourceModel
      */
-    private $resourceModel;
+    private ResourceModel $resourceModel;
 
     /**
      * @var CollectionFactory
      */
-    private $collectionFactory;
+    private CollectionFactory $collectionFactory;
     /**
      * @var Collection
      */
@@ -77,7 +77,7 @@ class EmployeeRepository implements EmployeeRepositoryInterface
      * Get Student Data by Id
      *
      * @param int $Id
-     * @return \Task\Employee\Model\Employee
+     * @return Employee
      */
     public function getById($Id)
     {
@@ -112,7 +112,7 @@ class EmployeeRepository implements EmployeeRepositoryInterface
      * Return the Employee Data by Employee Id
      *
      * @param int $Id
-     * @return \Task\Employee\Model\Employee
+     * @return Employee
      */
     public function getDataById($Id)
     {
@@ -124,7 +124,7 @@ class EmployeeRepository implements EmployeeRepositoryInterface
      * Return the List
      *
      * @param SearchCriteriaInterface $searchCriteria
-     * @return \Task\Employee\Api\Data\EmployeeSearchResultInterface
+     * @return EmployeeSearchResultInterface
      */
     public function getList(SearchCriteriaInterface $searchCriteria)
     {
@@ -146,7 +146,7 @@ class EmployeeRepository implements EmployeeRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function save(\Task\Employee\Api\Data\EmployeeInterface $employeeData)
+    public function save(EmployeeInterface $employeeData)
     {
         return $this->resourceModel->save($employeeData);
     }

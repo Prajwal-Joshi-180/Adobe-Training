@@ -63,7 +63,6 @@ class Employee extends AbstractExtensibleModel implements EmployeeInterface
     /**
      * Sets the First Name
      *
-     * @param string $firstname
      * @return EmployeeInterface
      */
     public function getFirstName(): string

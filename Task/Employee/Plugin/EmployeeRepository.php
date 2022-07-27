@@ -2,8 +2,10 @@
 
 namespace Task\Employee\Plugin;
 
+use Task\Employee\Api\Data\EmployeeInterface;
+use Task\Employee\Api\EmployeeRepositoryInterface;
 use Task\Employee\Model\ResourceModel\Employee\CollectionFactory;
-use Task\Employee\Model\EmployeeAddressRepository;
+use Task\Employee\Api\EmployeeAddressRepositoryInterface;
 use Task\Employee\Api\Data\EmployeeExtensionFactory;
 use Task\Employee\Api\EmployeeRepositoryExtension;
 use Magento\Framework\Api\SearchCriteriaBuilder;
@@ -15,9 +17,9 @@ class EmployeeRepository
      */
     private CollectionFactory $collectionFactory;
     /**
-     * @var EmployeeAddressRepository
+     * @var EmployeeAddressRepositoryInterface
      */
-    private EmployeeAddressRepository $addressRepository;
+    private EmployeeAddressRepositoryInterface $addressRepository;
     /**
      * @var EmployeeRepositoryExtension
      */
@@ -26,18 +28,22 @@ class EmployeeRepository
      * @var EmployeeExtensionFactory
      */
     private EmployeeExtensionFactory $employeeExtensionFactory;
+    /**
+     * @var SearchCriteriaBuilder
+     */
+    private SearchCriteriaBuilder $searchCriteriaBuilder;
 
     /**
      * EmployeeRepositoryInterface constructor.
      * @param CollectionFactory $collectionFactory
-     * @param EmployeeAddressRepository $addressRepository
+     * @param EmployeeAddressRepositoryInterface $addressRepository
      * @param EmployeeExtensionFactory $employeeExtensionFactory
      * @param EmployeeRepositoryExtension $employeeRepositoryExtension
      * @param SearchCriteriaBuilder $searchCriteriaBuilder
      */
     public function __construct(
         CollectionFactory $collectionFactory,
-        EmployeeAddressRepository $addressRepository,
+        EmployeeAddressRepositoryInterface $addressRepository,
         EmployeeExtensionFactory $employeeExtensionFactory,
         EmployeeRepositoryExtension $employeeRepositoryExtension,
         SearchCriteriaBuilder $searchCriteriaBuilder
@@ -52,13 +58,13 @@ class EmployeeRepository
     /**
      * Adding extension attribute Address Items to getById
      *
-     * @param \Task\Employee\Api\EmployeeRepositoryInterface $subject
-     * @param \Task\Employee\Api\Data\EmployeeInterface $employee
-     * @return \Task\Employee\Api\Data\EmployeeInterface
+     * @param EmployeeRepositoryInterface $subject
+     * @param EmployeeInterface $employee
+     * @return EmployeeInterface
      */
     public function afterGetById(
-        \Task\Employee\Api\EmployeeRepositoryInterface $subject,
-        \Task\Employee\Api\Data\EmployeeInterface $employee
+        EmployeeRepositoryInterface $subject,
+        EmployeeInterface $employee
     ) {
         $filter=$this->searchCriteriaBuilder->addFilter('address_id', $employee->getId());
         $extensionAttributes=$employee->getExtensionAttributes();

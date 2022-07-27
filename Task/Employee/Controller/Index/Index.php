@@ -5,10 +5,12 @@ namespace Task\Employee\Controller\Index;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\Result\Json;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Framework\Controller\Result\JsonFactory;
+use Task\Employee\Api\Data\EmployeeInterface;
 use Task\Employee\Api\EmployeeRepositoryInterface;
 use Task\Employee\Api\EmployeeAddressRepositoryInterface;
 
@@ -56,7 +58,7 @@ class Index extends Action
     /**
      * Return the Json Data
      *
-     * @return ResponseInterface|\Magento\Framework\Controller\Result\Json|ResultInterface|\Task\Employee\Api\Data\EmployeeInterface
+     * @return ResponseInterface|Json|ResultInterface|EmployeeInterface
      */
     public function execute()
     {

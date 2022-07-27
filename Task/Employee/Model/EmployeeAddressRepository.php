@@ -2,8 +2,9 @@
 
 namespace Task\Employee\Model;
 
+use Task\Employee\Api\Data\EmployeeAddressInterface;
+use Task\Employee\Api\Data\EmployeeSearchResultInterface;
 use Task\Employee\Api\EmployeeAddressRepositoryInterface;
-use Task\Employee\Model\EmployeeAddress as Model;
 use Task\Employee\Model\EmployeeAddressFactory as ModelFactory;
 use Task\Employee\Model\ResourceModel\EmployeeAddress as ResourceModel;
 use Task\Employee\Model\ResourceModel\EmployeeAddress\Collection;
@@ -75,7 +76,7 @@ class EmployeeAddressRepository implements EmployeeAddressRepositoryInterface
      * Get Student Data by Id
      *
      * @param int $Id
-     * @return \Task\Employee\Model\EmployeeAddress
+     * @return EmployeeAddress
      */
     public function getById($Id)
     {
@@ -88,7 +89,7 @@ class EmployeeAddressRepository implements EmployeeAddressRepositoryInterface
      * Return the Address Data by ID
      *
      * @param int $addressId
-     * @return \Task\Employee\Api\Data\EmployeeAddressInterface|array
+     * @return EmployeeAddressInterface|array
      */
     public function getByAddressId($addressId)
     {
@@ -110,7 +111,7 @@ class EmployeeAddressRepository implements EmployeeAddressRepositoryInterface
      * Return the List
      *
      * @param SearchCriteriaInterface $searchCriteria
-     * @return \Task\Employee\Api\Data\EmployeeSearchResultInterface
+     * @return EmployeeSearchResultInterface
      */
     public function getList(SearchCriteriaInterface $searchCriteria)
     {

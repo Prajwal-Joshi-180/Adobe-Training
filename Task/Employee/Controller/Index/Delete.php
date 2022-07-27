@@ -5,6 +5,8 @@ namespace Task\Employee\Controller\Index;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\Result\Redirect;
+use Magento\Framework\Controller\ResultInterface;
 use Task\Employee\Api\EmployeeRepositoryInterface;
 
 class Delete extends Action
@@ -31,7 +33,7 @@ class Delete extends Action
     /**
      * Delete the Employee by id
      *
-     * @return ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
+     * @return ResponseInterface|Redirect|ResultInterface
      */
     public function execute()
     {

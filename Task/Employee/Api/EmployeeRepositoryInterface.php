@@ -4,8 +4,6 @@ namespace Task\Employee\Api;
 
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Task\Employee\Api\Data\EmployeeInterface;
-use Task\Employee\Model\Employee as Model;
-use Task\Employee\Model\ResourceModel\Employee\Collection;
 
 interface EmployeeRepositoryInterface
 {

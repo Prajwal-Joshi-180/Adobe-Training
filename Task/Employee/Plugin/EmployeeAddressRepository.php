@@ -2,29 +2,35 @@
 
 namespace Task\Employee\Plugin;
 
-use Task\Employee\Model\EmployeeRepository;
+use Task\Employee\Api\Data\EmployeeAddressInterface;
+use Task\Employee\Api\EmployeeAddressRepositoryInterface;
+use Task\Employee\Api\EmployeeRepositoryInterface;
 use Task\Employee\Api\Data\EmployeeAddressExtensionFactory;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 
 class EmployeeAddressRepository
 {
     /**
-     * @var EmployeeRepository
+     * @var EmployeeRepositoryInterface
      */
-    private EmployeeRepository $employeeRepository;
+    private EmployeeRepositoryInterface $employeeRepository;
     /**
      * @var EmployeeAddressExtensionFactory
      */
     private EmployeeAddressExtensionFactory $employeeAddressExtensionFactory;
+    /**
+     * @var SearchCriteriaBuilder
+     */
+    private SearchCriteriaBuilder $searchCriteriaBuilder;
 
     /**
      * EmployeeAddressRepositoryInterface constructor.
-     * @param EmployeeRepository $employeeRepository
+     * @param EmployeeRepositoryInterface $employeeRepository
      * @param EmployeeAddressExtensionFactory $employeeAddressExtensionFactory
      * @param SearchCriteriaBuilder $searchCriteriaBuilder
      */
     public function __construct(
-        EmployeeRepository $employeeRepository,
+        EmployeeRepositoryInterface $employeeRepository,
         EmployeeAddressExtensionFactory $employeeAddressExtensionFactory,
         SearchCriteriaBuilder $searchCriteriaBuilder
     ) {
@@ -36,13 +42,13 @@ class EmployeeAddressRepository
     /**
      * Adding extension attribute Employee Details to getById
      *
-     * @param \Task\Employee\Api\EmployeeAddressRepositoryInterface $subject
-     * @param \Task\Employee\Api\Data\EmployeeAddressInterface $employeeAddress
-     * @return \Task\Employee\Api\Data\EmployeeAddressInterface
+     * @param EmployeeAddressRepositoryInterface $subject
+     * @param EmployeeAddressInterface $employeeAddress
+     * @return EmployeeAddressInterface
      */
     public function afterGetById(
-        \Task\Employee\Api\EmployeeAddressRepositoryInterface $subject,
-        \Task\Employee\Api\Data\EmployeeAddressInterface $employeeAddress
+        EmployeeAddressRepositoryInterface $subject,
+        EmployeeAddressInterface $employeeAddress
     ) {
         $extensionAttributes=$employeeAddress->getExtensionAttributes();
         $employeeExtension = $extensionAttributes ?:$this->employeeAddressExtensionFactory->create();
