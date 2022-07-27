@@ -6,6 +6,6 @@
         <attribute code="address_items" type="Task\Employee\Api\Data\EmployeeAddressInterface[]"/>
     </extension_attributes>
     <extension_attributes for="Task\Employee\Api\Data\EmployeeAddressInterface">
-        <attribute code="employee_details" type="Task\Employee\Api\Data\EmployeeInterface[]"/>
+        <attribute code="employee_details" type="Task\Employee\Api\Data\EmployeeInterface"/>
     </extension_attributes>
 </config>

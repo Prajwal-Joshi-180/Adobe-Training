@@ -12,7 +12,7 @@ use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 use Task\Employee\Api\Data\EmployeeSearchResultInterfaceFactory;
 
-class EmployeeAddressRepositoryModel implements EmployeeAddressRepositoryInterface
+class EmployeeAddressRepository implements EmployeeAddressRepositoryInterface
 {
     /**
      * @var EmployeeAddressFactory
@@ -44,7 +44,7 @@ class EmployeeAddressRepositoryModel implements EmployeeAddressRepositoryInterfa
     private CollectionProcessorInterface $collectionProcessor;
 
     /**
-     * EmployeeAddressRepositoryModel constructor.
+     * EmployeeAddressRepository constructor.
      * @param CollectionFactory $collectionFactory
      * @param Collection $collection
      * @param EmployeeAddressFactory $modelFactory

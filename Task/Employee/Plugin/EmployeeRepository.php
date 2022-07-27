@@ -3,21 +3,21 @@
 namespace Task\Employee\Plugin;
 
 use Task\Employee\Model\ResourceModel\Employee\CollectionFactory;
-use Task\Employee\Model\EmployeeAddressRepositoryModel;
+use Task\Employee\Model\EmployeeAddressRepository;
 use Task\Employee\Api\Data\EmployeeExtensionFactory;
 use Task\Employee\Api\EmployeeRepositoryExtension;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 
-class EmployeeRepositoryInterface
+class EmployeeRepository
 {
     /**
      * @var CollectionFactory
      */
     private CollectionFactory $collectionFactory;
     /**
-     * @var EmployeeAddressRepositoryModel
+     * @var EmployeeAddressRepository
      */
-    private EmployeeAddressRepositoryModel $addressRepository;
+    private EmployeeAddressRepository $addressRepository;
     /**
      * @var EmployeeRepositoryExtension
      */
@@ -30,14 +30,14 @@ class EmployeeRepositoryInterface
     /**
      * EmployeeRepositoryInterface constructor.
      * @param CollectionFactory $collectionFactory
-     * @param EmployeeAddressRepositoryModel $addressRepository
+     * @param EmployeeAddressRepository $addressRepository
      * @param EmployeeExtensionFactory $employeeExtensionFactory
      * @param EmployeeRepositoryExtension $employeeRepositoryExtension
      * @param SearchCriteriaBuilder $searchCriteriaBuilder
      */
     public function __construct(
         CollectionFactory $collectionFactory,
-        EmployeeAddressRepositoryModel $addressRepository,
+        EmployeeAddressRepository $addressRepository,
         EmployeeExtensionFactory $employeeExtensionFactory,
         EmployeeRepositoryExtension $employeeRepositoryExtension,
         SearchCriteriaBuilder $searchCriteriaBuilder

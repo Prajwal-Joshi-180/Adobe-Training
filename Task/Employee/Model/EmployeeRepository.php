@@ -13,7 +13,7 @@ use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 use Task\Employee\Api\Data\EmployeeSearchResultInterfaceFactory;
 
-class EmployeeRepositoryModel implements EmployeeRepositoryInterface
+class EmployeeRepository implements EmployeeRepositoryInterface
 {
     /**
      * @var EmployeeFactory
@@ -47,7 +47,7 @@ class EmployeeRepositoryModel implements EmployeeRepositoryInterface
     private EmployeeSearchResultInterfaceFactory $employeeSearchResultInterfaceFactory;
 
     /**
-     * EmployeeRepositoryModel constructor.
+     * EmployeeRepository constructor.
      * @param CollectionFactory $collectionFactory
      * @param Collection $collection
      * @param EmployeeFactory $modelFactory
@@ -112,14 +112,13 @@ class EmployeeRepositoryModel implements EmployeeRepositoryInterface
      * Return the Employee Data by Employee Id
      *
      * @param int $Id
-     * @return \Task\Employee\Api\Data\EmployeeInterface|array
+     * @return \Task\Employee\Model\Employee
      */
     public function getDataById($Id)
     {
-        $object=$this->modelFactory->create();
-        $collection=$object->getCollection();
-        $collection->addFieldToFilter('id', $Id);
-        return $collection->getData();
+        $model=$this->modelFactory->create();
+        $this->resourceModel->load($model, $Id);
+        return $model;
     }
     /**
      * Return the List
