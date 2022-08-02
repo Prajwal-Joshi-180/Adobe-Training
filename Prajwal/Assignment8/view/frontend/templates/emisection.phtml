@@ -1,0 +1,27 @@
+<?php
+/** @var  Magento\Catalog\Block\Product\View $block */
+$viewModel = $block->getData('view_model');
+$data = $viewModel->getEmiData();
+$data = (array)json_decode($data, true);
+$data = array_values($data);
+$data = json_encode($data);
+?>
+<div class="prajwal-emisection" data-bind="scope: 'section'">
+    <h3 data-bind="text: emisection().gender"></h3>
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "section": {
+                        "component": "Prajwal_Assignment8/js/emisection",
+                        "templates": "Prajwal_Assignment8/emisection",
+                        "price": <?= $block->getProduct()->getFinalPrice() ?>,
+                        "data": <?= $data ?>
+                    }
+                }
+            }
+        }
+    }
+</script>
