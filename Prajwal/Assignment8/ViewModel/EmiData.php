@@ -25,6 +25,11 @@ class EmiData implements ArgumentInterface
         $this->scopeconfig=$scopeConfig;
     }
 
+    /**
+     * Return The the Emi plans
+     *
+     * @return array
+     */
     public function getEmiData()
     {
         return $this->scopeconfig->getValue('emi/general/config_table', ScopeInterface::SCOPE_STORE);

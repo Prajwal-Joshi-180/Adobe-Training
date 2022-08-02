@@ -31,8 +31,14 @@ class EmiSection implements SectionSourceInterface
      */
     public function getSectionData()
     {
+        $gender = $this->customerSession->getCustomer()->getGender();
+        if ($gender==1) {
+            $gender='male';
+        } elseif ($gender==2) {
+            $gender='female';
+        }
         return [
-            'gender' =>($this->customerSession->getCustomer()->getGender()==1)?'male':'female',
+            'gender' => $gender,
         ];
     }
 }
