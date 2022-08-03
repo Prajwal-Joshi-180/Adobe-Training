@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Prajwal\Assignment8\CustomerData;
 
 use Magento\Customer\CustomerData\SectionSourceInterface;

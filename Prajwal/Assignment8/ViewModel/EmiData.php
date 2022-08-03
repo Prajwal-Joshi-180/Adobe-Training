@@ -2,7 +2,6 @@
 
 namespace Prajwal\Assignment8\ViewModel;
 
-use Magento\Customer\Model\Session;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
@@ -16,11 +15,23 @@ class EmiData implements ArgumentInterface
     /**
      * @var ScopeConfigInterface
      */
-    private ScopeConfigInterface $scopeconfig;
+    protected ScopeConfigInterface $scopeconfig;
     /**
      * @var Context
      */
     protected Context $httpcontext;
+    /**
+     * @var StoreManagerInterface
+     */
+    protected StoreManagerInterface $storeManager;
+    /**
+     * @var Currency
+     */
+    protected Currency $currencySymbol;
+    /**
+     * @var CurrencyInterface
+     */
+    protected CurrencyInterface $localecurrency;
 
     /**
      * EmiData constructor.

@@ -3,7 +3,6 @@
 namespace Prajwal\Assignment8\Block\Adminhtml\Form;
 
 use Magento\Config\Block\System\Config\Form\Field\FieldArray\AbstractFieldArray;
-use Magento\Framework\DataObject;
 
 class ConfigTable extends AbstractFieldArray
 {

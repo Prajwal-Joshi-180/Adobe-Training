@@ -12,16 +12,16 @@ $currency=$viewModel->getCurrency();
     <h3 data-bind="text: emisection().gender"></h3>
 </div>
 <?php if ($customer): ?>
-<a class="emi-plan">EMI Plans</a>
-<table id="emi-table" class="emi-table">
-    <tr>
-    <th>Emi Plan</th>
-    <th>Interest</th>
-    <th>Total Price</th>
-    </tr>
-</table>
+    <a class="emi-plan">EMI Plans</a>
+    <table id="emi-table" class="emi-table">
+        <tr>
+            <th>Emi Plan</th>
+            <th>Interest</th>
+            <th>Total Price</th>
+        </tr>
+    </table>
 <?php else: ?>
-<p>Login to get EMI Plans</p>
+    <p>Login to get EMI Plans</p>
 <?php endif;?>
 <script type="text/x-magento-init">
     {

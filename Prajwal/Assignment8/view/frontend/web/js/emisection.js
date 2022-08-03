@@ -32,9 +32,9 @@ define([
                 var row = document.createElement("tr");
                 row.className = "row-value";
                 Object.values(res).map(value => {
-                        var col = document.createElement("td");
-                        col.innerText = value;
-                        row.appendChild(col)
+                    var col = document.createElement("td");
+                    col.innerText = value;
+                    row.appendChild(col)
                 })
                 document.getElementById("emi-table").appendChild(row)
             })
