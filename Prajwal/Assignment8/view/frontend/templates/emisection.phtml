@@ -1,14 +1,17 @@
 <?php
 /** @var  Magento\Catalog\Block\Product\View $block */
 $viewModel = $block->getData('view_model');
-$data = $viewModel->getEmiData();
+$data = $viewModel->getEmidata();
 $data = (array)json_decode($data, true);
 $data = array_values($data);
 $data = json_encode($data);
+$customer=$viewModel->isCustomerloggedin();
+$currency=$viewModel->getCurrency();
 ?>
 <div class="prajwal-emisection" data-bind="scope: 'section'">
     <h3 data-bind="text: emisection().gender"></h3>
 </div>
+<?php if ($customer): ?>
 <a class="emi-plan">EMI Plans</a>
 <table id="emi-table" class="emi-table">
     <tr>
@@ -17,6 +20,9 @@ $data = json_encode($data);
     <th>Total Price</th>
     </tr>
 </table>
+<?php else: ?>
+<p>Login to get EMI Plans</p>
+<?php endif;?>
 <script type="text/x-magento-init">
     {
         "*": {
@@ -26,7 +32,8 @@ $data = json_encode($data);
                         "component": "Prajwal_Assignment8/js/emisection",
                         "templates": "Prajwal_Assignment8/emisection",
                         "price": <?= $block->getProduct()->getFinalPrice() ?>,
-                        "data": <?= $data ?>
+                        "data": <?= $data ?>,
+                        "currency": "<?= $currency ?>"
                     }
                 }
             }

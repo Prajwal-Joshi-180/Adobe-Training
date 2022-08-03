@@ -13,6 +13,7 @@ define([
             var data = this.data;
             var price= this.price;
             var gender= this.emisection().gender;
+            var currency=this.currency;
             // console.log(data,'abcd');
             // console.log(price,'abc');
             // console.log(gender,'abc');
@@ -23,7 +24,7 @@ define([
                     var intr = Si/1200;
                     var totalprice = Number(price)+Number(intr);
                     var monthprice = totalprice/ data[i].tenure;
-                    plan.push({emiplan:'₹'+ monthprice.toFixed(2)+'x'+data[i].tenure+'m',interest: '₹'+intr+'('+ data[i].interest_rate+'%)', totalprice: '₹'+totalprice});
+                    plan.push({emiplan:currency + monthprice.toFixed(2)+'x'+data[i].tenure+'m',interest: currency + intr+'('+ data[i].interest_rate+'%)', totalprice: currency +totalprice});
                 }
             }
             console.log(plan,'xyz');
@@ -38,7 +39,6 @@ define([
                 document.getElementById("emi-table").appendChild(row)
             })
             $(document).ready(function () {
-                console.log($);
                 $('.emi-table').hide(0);
                 $('.emi-plan').on('click', function () {
                     $('.emi-table').toggle();
