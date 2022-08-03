@@ -1,7 +1,8 @@
 define([
+    'jquery',
     'uiComponent',
     'Magento_Customer/js/customer-data'
-], function (Component, customerData) {
+], function ($,Component, customerData) {
     'use strict';
 
     return Component.extend({
@@ -34,8 +35,15 @@ define([
                         col.innerText = value;
                         row.appendChild(col)
                 })
-                document.getElementById("emi").appendChild(row)
+                document.getElementById("emi-table").appendChild(row)
             })
+            $(document).ready(function () {
+                console.log($);
+                $('.emi-table').hide(0);
+                $('.emi-plan').on('click', function () {
+                    $('.emi-table').toggle();
+                });
+            });
         }
     });
 });
