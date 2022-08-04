@@ -1,8 +1,9 @@
 define([
     'jquery',
+    'Magento_Ui/js/modal/modal',
     'uiComponent',
     'Magento_Customer/js/customer-data'
-], function ($,Component, customerData) {
+], function ($,modal,Component, customerData) {
     'use strict';
 
     return Component.extend({
@@ -28,6 +29,8 @@ define([
                 }
             }
             console.log(plan,'xyz');
+
+            /** Preparing Table */
             plan.forEach(res => {
                 var row = document.createElement("tr");
                 row.className = "row-value";
@@ -38,11 +41,22 @@ define([
                 })
                 document.getElementById("emi-table").appendChild(row)
             })
+
+            /** POP-UP */
             $(document).ready(function () {
                 $('.emi-table').hide(0);
                 $('.emi-plan').on('click', function () {
-                    $('.emi-table').toggle();
-                });
+                    var modaloption = {
+                        type: 'popup',
+                        modalClass: 'modal-popup',
+                        responsive: true,
+                        innerScroll: true,
+                        clickableOverlay: true,
+                        title: 'EMI Plans'
+                    };
+                    var callforoption = modal(modaloption, $('.emi-table'));
+                    $('.emi-table').modal('openModal');
+                })
             });
         }
     });
