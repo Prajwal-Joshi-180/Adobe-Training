@@ -57,17 +57,21 @@ class EmiData implements ArgumentInterface
     }
 
     /**
-     * Return The the Emi plans
+     * Return Emi Data
      *
-     * @return array
+     * @return string
      */
     public function getEmidata()
     {
-        return $this->scopeconfig->getValue('emi/general/config_table', ScopeInterface::SCOPE_STORE);
+        $data = $this->scopeconfig->getValue('emi/general/config_table', ScopeInterface::SCOPE_STORE);
+        $data = (array)json_decode($data, true);
+        $data = array_values($data);
+        $data = json_encode($data);
+        return $data;
     }
 
     /**
-     * Return Bool
+     * Return Customer login or not
      *
      * @return bool
      */

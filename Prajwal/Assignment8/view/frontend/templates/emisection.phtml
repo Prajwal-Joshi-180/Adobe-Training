@@ -2,9 +2,6 @@
 /** @var  Magento\Catalog\Block\Product\View $block */
 $viewModel = $block->getData('view_model');
 $data = $viewModel->getEmidata();
-$data = (array)json_decode($data, true);
-$data = array_values($data);
-$data = json_encode($data);
 $customer=$viewModel->isCustomerloggedin();
 $currency=$viewModel->getCurrency();
 ?>
